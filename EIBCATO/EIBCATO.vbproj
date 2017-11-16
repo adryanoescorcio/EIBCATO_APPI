@@ -1277,6 +1277,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="FRMClasse.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -1943,6 +1944,13 @@
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="FRMClasse.aspx.designer.vb">
+      <DependentUpon>FRMClasse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FRMClasse.aspx.vb">
+      <DependentUpon>FRMClasse.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2027,6 +2035,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PIBICAS\PIBICAS\PIBICAS.csproj">
+      <Project>{09a3ba24-f6e0-4208-9184-39844d50cb3a}</Project>
+      <Name>PIBICAS</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
