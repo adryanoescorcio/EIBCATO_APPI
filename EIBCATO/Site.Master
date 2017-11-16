@@ -1,0 +1,215 @@
+﻿<%@ Master Language="VB" AutoEventWireup="true" CodeBehind="Site.master.vb" Inherits="EIBCATO.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head runat="server">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <asp:ContentPlaceHolder ID="Head" runat="server" />
+
+    <title>E-IBCA - Igreja Batista Catedral de Adoração</title>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <link rel="stylesheet" type="text/css" href="assets/lib/perfect-scrollbar/css/perfect-scrollbar.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/lib/material-design-icons/css/material-design-iconic-font.min.css" />
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="assets/lib/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/lib/select2/css/select2.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/lib/datatables/css/dataTables.bootstrap.min.css" />
+    <%--Estilização própria do sistema--%>
+    <link rel="stylesheet" type="text/css" href="css/cssGlobal.css" />
+    <link rel="stylesheet" type="text/css" href="css/materialize.css" />
+
+</head>
+<body class="panel panel-fundo">
+
+    <div class="be-wrapper be-nosidebar-left">
+        <form id="Master_Page" runat="server">
+
+            <nav class="navbar navbar-default navbar-fixed-top be-top-header clr-royalblue3">
+                <div class="container-fluid">
+
+                    <%--Logotipo do Sistema--%>
+                    <div class="navbar-header">
+                        <asp:ContentPlaceHolder ID="Cabacalhoesqurdo" runat="server">
+                            <div class="DivMargemTopo3">
+                                <asp:Image runat="server" CssClass="imagemLogo" Height="75px" ImageUrl="Imagens/Logoempresa.png"></asp:Image>
+                                <h3 style="float: right; color: aliceblue; text-shadow: 5px 5px 8px #333;">| Igreja Batista Catedral de Adoração</h3>
+                            </div>
+                        </asp:ContentPlaceHolder>
+                    </div>
+
+                    <%--Setup flutuante do perfil usuário--%>
+                    <div class="be-right-navbar">
+                        <ul class="nav navbar-nav navbar-right be-user-nav">
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="true"
+                                    class="dropdown-toggle">
+                                    <img src="Imagens/Masculino_02.png" alt="Avatar" />
+
+                                    <span class="user-name"></span>
+                                </a>
+                                <ul role="menu" class="dropdown-menu">
+                                    <li>
+                                        <div class="user-info">
+                                            <div class="user-name">
+                                                <asp:Label ID="LBL_Patente_Sigla" Font-Bold="true" Font-Underline="true" runat="server"
+                                                    Text="" />
+                                                <asp:Label ID="LBL_NomeGuerra" Font-Bold="true" Font-Underline="true" runat="server"
+                                                    Text="" />
+                                            </div>
+                                            <div class="user-position online">
+                                                <asp:Label runat="server" ID="LBL_PERFIL"></asp:Label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li style="margin-left: 10px;">
+                                        <div class="DivFontUsuario">
+                                            <div>
+                                                <asp:Label runat="server" ID="LBL_Nome" CssClass="LabelSis"></asp:Label>
+                                            </div>
+                                            <div>
+                                                <asp:Label runat="server" ID="LBL_Patente" CssClass="LabelSis"></asp:Label>
+                                            </div>
+                                            <div>
+                                                <asp:Label runat="server" ID="LBL_Lotacao" CssClass="LabelSis"></asp:Label>
+                                            </div>
+                                            <br />
+                                            <div>
+                                                Acesso: <asp:Label runat="server" ID="LBL_Acesso" CssClass="LabelSis"></asp:Label>
+                                            </div>
+                                            <div>
+                                                <a href="../default.aspx" class="waves-effect waves-red btn" runat="server" id="BNT_SAIR">
+                                                    <i class="material-icons left">power_settings_new</i>
+                                                    Sair
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="page-title">
+                            <span>
+                                <asp:Label ID="LBL_C008_Label" runat="server" /></span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div id="btn_menu">
+                <a class="bbtn bbtn-space bbtn-primary bbtn-big" onclick="openNav()">
+                    <i class="material-icons right">menu</i>
+                    Menu
+                </a>
+            </div>
+
+            <%--Menu esquerdo flutuante--%>
+            <div class="be-left-sidebar">
+                <div class="left-sidebar-wrapper">
+                    <a href="#" class="left-sidebar-toggle">UI Bottons</a>
+                    <div class="left-sidebar-spacer">
+                        <div class="left-sidebar-scroll">
+                            <div class="left-sidebar-content">
+                                <div id="mySidenav" class="sidenav">
+                                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                    <div runat="server" id="_menu_lista">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <%--Formulário dinamico--%>
+            <div class="be-content">
+                <div class="Div_Formulario">
+
+                    <asp:ScriptManager ID="ScriptManager1" runat="server">
+                    </asp:ScriptManager>
+                    <div runat="server" id="CAMPO_MENSAGEM" visible="false">
+                            <label style="height:10px"></label>
+                            <div role="alert" class="alert alert-danger alert-icon alert-icon-border alert-dismissible">
+                                <div class="icon"><span class="mdi mdi-close-circle-o"></span></div>
+                                <div class="message">
+                                    <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true" class="mdi mdi-close"></span></button>
+                                    <strong>Atenção!</strong>
+                                    <asp:Label runat="server" ID="LBL_Mensagem"></asp:Label>
+                                </div>
+                            </div>
+                        </div>
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                        <div>
+                        </div>
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <div class="clr-royalblue4">
+                <div id="Div1" class="panel-footer ">
+                    <a style="color: whitesmoke" target="_blank" href="http://www.saude.ma.gov.br">Sistema Eletrônico da Igreja Batista Catedral de Adoração</a> | Tel. (98) 9999-9999       
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <script src="assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+    <script src="assets/js/main.js" type="text/javascript"></script>
+    <script src="assets/lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/lib/prettify/prettify.js" type="text/javascript"></script>
+    <script src="assets/lib/parsley/parsley.min.js" type="text/javascript"></script>
+    <script src="assets/lib/datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+    <script src="assets/lib/select2/js/select2.min.js" type="text/javascript"></script>
+    <script src="assets/lib/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="assets/lib/datatables/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/js/app-tables-datatables.js" type="text/javascript"></script>
+    <script src="assets/js/app-form-elements.js" type="text/javascript"></script>
+    <script src="assets/lib/jquery.maskedinput/jquery.maskedinput.min.js" type="text/javascript"></script>
+    <script src="assets/js/app-form-masks.js" type="text/javascript"></script>
+    <script src="js/app-global.js"></script>
+    <script src="js/materialize.js"></script>
+
+    <script>
+        function bindEvents() {
+
+            $(function EventosJS() {
+                //initialize the javascript
+                App.init();
+
+                //Runs prettify
+                prettyPrint();
+                App.dataTables();
+                App.masks();
+                App.formElements();
+
+            });
+        }
+
+        $(document).ready(function () {
+            bindEvents();
+
+            var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+            prm.add_endRequest(function () {
+                bindEvents();
+            });
+
+        });
+    </script>
+
+</body>
+</html>
