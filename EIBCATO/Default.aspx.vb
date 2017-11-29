@@ -58,7 +58,7 @@
                 Throw New Exception("usuário/senha não autorizado")
             End If
 
-            Me.Obj_Seguranca.Local = Me.F_Recupera_IP & " - " & Me.F_Recupera_Mac
+            Me.Obj_Seguranca.Rastro = Me.F_Recupera_IP & " - " & Me.F_Recupera_Mac
 
             If Me.Obj_Seguranca._usuario.UsuarioTentativaErro > 4 Then
                 Throw New Exception("Limite superado - FALAR COM SUPORTE")
@@ -89,7 +89,7 @@
 
             'If Me.Obj_Seguranca.C010_PrincipalNome <> "" Then
             Me.S_Registra_Entrada()
-            Response.Redirect("FRM_Principal.aspx")
+            Response.Redirect("FRMClasse.aspx")
             'Else
             'Me.LBL_Mensagem.Text = "Usuário não possui tela principal"
             'Me.LBL_Mensagem.Visible = True

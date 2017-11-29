@@ -68,6 +68,15 @@ Partial Public Class SiteMaster
     Protected WithEvents LBL_PERFIL As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
+    '''LBL_Acesso control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents LBL_Acesso As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''LBL_Nome control.
     '''</summary>
     '''<remarks>
@@ -93,15 +102,6 @@ Partial Public Class SiteMaster
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents LBL_Lotacao As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
-    '''LBL_Acesso control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents LBL_Acesso As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
     '''BNT_SAIR control.

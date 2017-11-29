@@ -4,7 +4,7 @@ Public Class Cls_Seguranca
 
     Public Tempo As Date
     Public TipoOperacao As String
-    Public Local As String
+    Public Rastro As String
     Public C005_Id As Integer
 
     Public F_Parametro As String
@@ -211,5 +211,7 @@ Public Class Cls_Seguranca
 
     End Function
 
-
+    Friend Function ValidarCPF(_cpf As String) As Boolean
+        Return F_CPF_Valido(_cpf)
+    End Function
 End Class

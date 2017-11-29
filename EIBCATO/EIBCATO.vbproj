@@ -1277,6 +1277,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="FRMCadastroUsuario.aspx" />
     <Content Include="FRMClasse.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1934,6 +1935,8 @@
     <Compile Include="classes\CLSN_Municipio.vb" />
     <Compile Include="classes\CLSN_TB005_Perfil.vb" />
     <Compile Include="classes\CLSN_TB017_UF.vb" />
+    <Compile Include="classes\CLSN_IGREJA.vb" />
+    <Compile Include="classes\CLSN_MEMBRESIA.vb" />
     <Compile Include="classes\CLSN_USUARIO.vb" />
     <Compile Include="classes\CLST_UsuarioFuncionalidade.vb" />
     <Compile Include="classes\Cls_Seguranca.vb" />
@@ -1943,6 +1946,13 @@
     <Compile Include="Default.aspx.vb">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="FRMCadastroUsuario.aspx.designer.vb">
+      <DependentUpon>FRMCadastroUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FRMCadastroUsuario.aspx.vb">
+      <DependentUpon>FRMCadastroUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FRMClasse.aspx.designer.vb">
       <DependentUpon>FRMClasse.aspx</DependentUpon>

@@ -1,9 +1,10 @@
 ﻿Public Class CLSN_TB005_PERFIL
 
-    Friend Function F_Get_NomePerfil() As DataTable
+    Friend Function F_Leitura_Grid() As List(Of PIBICAS.Models.Perfil)
         Try
             Dim dao = New PIBICAS.Models.Dao.PerfilDAO
-            Return dao.CarregarDados()
+
+            Return dao.CarregarDados().ToList
 
         Catch ex As Exception
             Throw

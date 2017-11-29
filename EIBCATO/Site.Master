@@ -44,7 +44,7 @@
                         <asp:ContentPlaceHolder ID="Cabacalhoesqurdo" runat="server">
                             <div class="DivMargemTopo3">
                                 <asp:Image runat="server" CssClass="imagemLogo" Height="75px" ImageUrl="Imagens/Logoempresa.png"></asp:Image>
-                                <h3 style="float: right; color: aliceblue; text-shadow: 5px 5px 8px #333;">| Igreja Batista Catedral de Adoração</h3>
+                                <h3 style="float: right; color: aliceblue; text-shadow: 5px 5px 8px #333;">| ...</h3>
                             </div>
                         </asp:ContentPlaceHolder>
                     </div>
@@ -76,6 +76,8 @@
                                     <li style="margin-left: 10px;">
                                         <div class="DivFontUsuario">
                                             <div>
+                                                 <asp:Label runat="server" ID="LBL_Acesso" CssClass="LabelSis"></asp:Label>
+                                                <br />
                                                 <asp:Label runat="server" ID="LBL_Nome" CssClass="LabelSis"></asp:Label>
                                             </div>
                                             <div>
@@ -83,10 +85,6 @@
                                             </div>
                                             <div>
                                                 <asp:Label runat="server" ID="LBL_Lotacao" CssClass="LabelSis"></asp:Label>
-                                            </div>
-                                            <br />
-                                            <div>
-                                                Acesso: <asp:Label runat="server" ID="LBL_Acesso" CssClass="LabelSis"></asp:Label>
                                             </div>
                                             <div>
                                                 <a href="../default.aspx" class="waves-effect waves-red btn" runat="server" id="BNT_SAIR">
