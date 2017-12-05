@@ -37,6 +37,12 @@ Public Class CLSN_USUARIO
         dao.InsertOrUpdate(usuario)
     End Sub
 
+    Friend Function obterUsuarioIdEF(_id As Integer) As Usuario
+        Dim dao = New PIBICAS.Models.Dao.UsuarioDAO
+
+        Return dao.PesquisarPorIdEF(_id)
+    End Function
+
     Friend Sub inserirAtualizarUsuario(usuario As Usuario)
         Dim dao = New PIBICAS.Models.Dao.UsuarioDAO
         dao.InsertOrUpdate(usuario)

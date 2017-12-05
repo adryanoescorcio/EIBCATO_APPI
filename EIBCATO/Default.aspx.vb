@@ -143,7 +143,6 @@
                 Exit Sub
             End If
 
-
             If Me.Obj_Seguranca._usuario.UsuarioSenha.ToUpper <> Me.Obj_Seguranca._usuario.UsuarioSenha.ToUpper Then
 
                 Throw New Exception("Problema ao trocar. Tente novamente")

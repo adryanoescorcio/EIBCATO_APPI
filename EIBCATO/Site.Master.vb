@@ -28,8 +28,13 @@
     Private Sub SetPerfilUsuario()
 
         Me.LBL_Nome.Text = Obj_Seguranca._usuario.UsuarioNome
-        Me.LBL_Lotacao.Text = "Igreja Batista Catedral de Adoração"
-        Me.LBL_Acesso.Text = "Pastor"
+
+        Dim _negocio As CLSN_USUARIO = New CLSN_USUARIO
+        Dim obj As PIBICAS.Models.Usuario = _negocio.obterUsuarioIdEF(Obj_Seguranca._usuario.UsuarioId)
+
+        Me.LBL_Lotacao.Text = obj.Membresias.First.Igreja.IgrejaNome
+        Me.LBL_Acesso.Text = obj.Membresias.First.Perfil.PerfilNome
+        Me.Obj_Seguranca.idIgreja = obj.Membresias.First.MembresiaIgrejaID
 
     End Sub
 

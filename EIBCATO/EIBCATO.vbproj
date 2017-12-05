@@ -48,6 +48,9 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=17.1.1.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.17.1.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="DBGlobal2">
       <HintPath>D:\TFS\sds-saude\Conector10\Common\DBGlobal2.dll</HintPath>
     </Reference>
@@ -1937,6 +1940,7 @@
     <Compile Include="classes\CLSN_TB017_UF.vb" />
     <Compile Include="classes\CLSN_IGREJA.vb" />
     <Compile Include="classes\CLSN_MEMBRESIA.vb" />
+    <Compile Include="classes\CLSN_CLASSE.vb" />
     <Compile Include="classes\CLSN_USUARIO.vb" />
     <Compile Include="classes\CLST_UsuarioFuncionalidade.vb" />
     <Compile Include="classes\Cls_Seguranca.vb" />

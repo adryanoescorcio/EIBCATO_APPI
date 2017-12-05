@@ -18,6 +18,16 @@ Public Class CLSN_MEMBRESIA
         End Try
     End Function
 
+    Friend Function listaMembrosAtivos(ByVal idIgreja As Integer) As List(Of Object)
+        Try
+            Dim dao = New PIBICAS.Models.Dao.MembresiaDAO
+            Return dao.membrosAtivos(idIgreja).ToList
+
+        Catch ex As Exception
+            Throw
+        End Try
+    End Function
+
     Friend Sub inserirAtualizarObjeto(_obj As Membresia)
         Dim dao = New PIBICAS.Models.Dao.MembresiaDAO
         dao.InsertOrUpdate(_obj)

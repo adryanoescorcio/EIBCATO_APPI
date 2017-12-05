@@ -18,6 +18,12 @@ Public Class CLSN_Igreja
         End Try
     End Function
 
+    Friend Function obterPorId(_id As Integer) As Igreja
+        Dim dao = New PIBICAS.Models.Dao.IgrejaDAO
+
+        Return dao.PesquisarPorId(_id)
+    End Function
+
     Friend Sub inserirAtualizarObjeto(_obj As Igreja)
         Dim dao = New PIBICAS.Models.Dao.IgrejaDAO
         dao.InsertOrUpdate(_obj)

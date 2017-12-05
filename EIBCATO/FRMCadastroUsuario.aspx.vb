@@ -323,7 +323,7 @@ Public Class FRMCadastroUsuario
         obj.UsuarioUsuario = Me.Obj_Seguranca._usuario.UsuarioNome
         obj.UsuarioRastro = Me.Obj_Seguranca.Rastro
         obj.UsuarioTempo = CDate(Now()).GetDateTimeFormats.GetValue(47)
-        obj.UsuarioTipoOperacao = IIf(LBL_C001_ID.Text Is Nothing, "Inclusão", "Alteração")
+        obj.UsuarioTipoOperacao = IIf(LBL_C001_ID.Text = "", "Inclusão", "Alteração")
     End Sub
 
     Private Sub setTelaBancoMembresia(ByRef obj As Membresia)

@@ -21,13 +21,18 @@ div.scrollmenu {
     margin-bottom: 35px;
 }
 
-div.scrollmenu a {
-    display: inline-block;
-    color: whitesmoke;
-    text-align: center;
-    padding: 14px;
-    text-decoration: none;
-}
+    div.scrollmenu a {
+        display: inline-block;
+        color: whitesmoke;
+        min-width: 100px;
+        border-right: 1px;
+        border-right-style: solid;
+        border-right-color: #807e7e;
+        letter-spacing:1px;
+        text-align: center;
+        padding: 14px;
+        text-decoration: none;
+    }
 
 div.scrollmenu a:hover {
     background-color: #777;

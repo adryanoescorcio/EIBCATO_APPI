@@ -25,8 +25,8 @@ Public Class Cls_Seguranca
     Public Relatorio As String
     Public Sql As String
     Public Obj_DataTable As DataTable
-    Public C003_ID As Nullable(Of Integer)
-    Public C004_ID As Nullable(Of Integer)
+    Public idIgreja As Nullable(Of Integer)
+    'Public C004_ID As Nullable(Of Integer)
     Public _usuario As Usuario
 
     Public Shared Function F_Mascara_CPF(ByVal pm_CPF As String) As String
