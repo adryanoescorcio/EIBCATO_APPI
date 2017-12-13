@@ -26,6 +26,7 @@ Public Class Cls_Seguranca
     Public Sql As String
     Public Obj_DataTable As DataTable
     Public idIgreja As Nullable(Of Integer)
+    Public idClasse As Nullable(Of Integer)
     'Public C004_ID As Nullable(Of Integer)
     Public _usuario As Usuario
 
@@ -60,8 +61,8 @@ Public Class Cls_Seguranca
     Public Function F_Registra_Saida_Usuario() As Boolean
 
         Try
-            Dim _negocioAcesso As CLSN_ACESSO = New CLSN_ACESSO()
-            _negocioAcesso.alterarAcessoSaida(Me._usuario.UsuarioId, CDate(Now()).GetDateTimeFormats.GetValue(47))
+            ' Dim _negocioAcesso As CLSN_ACESSO = New CLSN_ACESSO()
+            '_negocioAcesso.alterarAcessoSaida(Me._usuario.UsuarioId, CDate(Now()).GetDateTimeFormats.GetValue(47))
 
             Return True
 

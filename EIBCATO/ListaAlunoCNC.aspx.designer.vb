@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class FRMClasse
+Partial Public Class ListaAlunoCNC
     
     '''<summary>
     '''UpdatePanel1 control.
@@ -131,67 +131,94 @@ Partial Public Class FRMClasse
     Protected WithEvents LBL_Mensagem As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''TXT_Codigo control.
+    '''TXT_NOME control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TXT_Codigo As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents TXT_NOME As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''TXT_PERIODO_INICIO control.
+    '''TXT_CPF control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TXT_PERIODO_INICIO As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents TXT_CPF As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''TXT_PERIODO_FIM control.
+    '''TXT_DATA_NASC control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TXT_PERIODO_FIM As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents TXT_DATA_NASC As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''TXT_Carga control.
+    '''DDL_Escolaridade control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TXT_Carga As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents DDL_Escolaridade As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
-    '''DDL_Membresia_Professor control.
+    '''TXT_Celular control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DDL_Membresia_Professor As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents TXT_Celular As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''TXT_Observacao control.
+    '''TXT_Equipe control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TXT_Observacao As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents TXT_Equipe As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''DDL_Status control.
+    '''TXT_Celula control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DDL_Status As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents TXT_Celula As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''TXT_Dicipulador control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TXT_Dicipulador As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''TXT_Batismo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TXT_Batismo As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
+    '''DDL_SITUACAO control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DDL_SITUACAO As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
     '''LBL_C001_ID control.

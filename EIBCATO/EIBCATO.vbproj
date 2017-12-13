@@ -1282,6 +1282,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="FRMCadastroUsuario.aspx" />
     <Content Include="FRMClasse.aspx" />
+    <Content Include="FRMFrequencia.aspx" />
+    <Content Include="FRMPlanoAula.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -1900,6 +1902,7 @@
     <Content Include="js\bootstrap-confirmation.js" />
     <Content Include="js\materialize.js" />
     <Content Include="js\npm.js" />
+    <Content Include="ListaAlunoCNC.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -1935,6 +1938,10 @@
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
     <Compile Include="classes\CLSN_ACESSO.vb" />
+    <Compile Include="classes\CLSN_LISTA_ALUNO_CLASSE.vb" />
+    <Compile Include="classes\CLSN_LISTA_ALUNO_CNC.vb" />
+    <Compile Include="classes\CLSN_CLASSE_PLANOAULA.vb" />
+    <Compile Include="classes\CLSN_PLANO_AULA.vb" />
     <Compile Include="classes\CLSN_Municipio.vb" />
     <Compile Include="classes\CLSN_TB005_Perfil.vb" />
     <Compile Include="classes\CLSN_TB017_UF.vb" />
@@ -1965,8 +1972,29 @@
       <DependentUpon>FRMClasse.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="FRMFrequencia.aspx.designer.vb">
+      <DependentUpon>FRMFrequencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FRMFrequencia.aspx.vb">
+      <DependentUpon>FRMFrequencia.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="FRMPlanoAula.aspx.designer.vb">
+      <DependentUpon>FRMPlanoAula.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FRMPlanoAula.aspx.vb">
+      <DependentUpon>FRMPlanoAula.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ListaAlunoCNC.aspx.designer.vb">
+      <DependentUpon>ListaAlunoCNC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaAlunoCNC.aspx.vb">
+      <DependentUpon>ListaAlunoCNC.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

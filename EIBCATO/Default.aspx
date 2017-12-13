@@ -57,8 +57,8 @@
                     <form class="login-form" runat="server">
                         <div class="row">
                             <div class="input-field col s12 center">
-                                <img src="Imagens/Logoempresa.png" alt="" class="circle responsive-img valign profile-image-login" style="height: 200px">
-                                <p class="center login-form-text texto_init">Sistema Igreja Batista Catedral da Adoração</p>
+                                <img src="Imagens/Logoempresa.png" alt="" class="circle responsive-img valign profile-image-login" style="height: 200px" />
+                                <p class="center login-form-text texto_init">Sistema Igreja Batista Catedral de Adoração</p>
                                 <br />
                             </div>
                         </div>

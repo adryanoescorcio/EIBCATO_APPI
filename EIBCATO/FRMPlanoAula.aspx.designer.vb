@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class FRMClasse
+Partial Public Class FRMPlanoAula
     
     '''<summary>
     '''UpdatePanel1 control.
@@ -131,49 +131,49 @@ Partial Public Class FRMClasse
     Protected WithEvents LBL_Mensagem As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
-    '''TXT_Codigo control.
+    '''TXT_Descricao control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TXT_Codigo As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents TXT_Descricao As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''TXT_PERIODO_INICIO control.
+    '''TXT_Professor control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TXT_PERIODO_INICIO As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents TXT_Professor As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''TXT_PERIODO_FIM control.
+    '''TXT_DATA_PREVISTO control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TXT_PERIODO_FIM As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents TXT_DATA_PREVISTO As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''TXT_Carga control.
+    '''TXT_Hora_Aula control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TXT_Carga As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents TXT_Hora_Aula As Global.System.Web.UI.WebControls.TextBox
     
     '''<summary>
-    '''DDL_Membresia_Professor control.
+    '''LBL_CH_RESTANTE control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DDL_Membresia_Professor As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents LBL_CH_RESTANTE As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
     '''TXT_Observacao control.
@@ -183,15 +183,6 @@ Partial Public Class FRMClasse
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents TXT_Observacao As Global.System.Web.UI.WebControls.TextBox
-    
-    '''<summary>
-    '''DDL_Status control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents DDL_Status As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
     '''LBL_C001_ID control.

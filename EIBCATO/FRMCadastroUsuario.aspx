@@ -118,7 +118,7 @@
                                         <div class="col s3">
                                             <asp:TextBox runat="server" TextMode="Password" Width="100%" ID="TXT_C001_Senha"></asp:TextBox>
                                         </div>
-                                        <span class="text-info">Todas as senhas são criptografadas no padrão MD5 Hash.</span>
+                                        <span class="text-info">Todas as senhas são criptografadas.</span>
                                     </div>
 
                                     <div class="input-field col s12">

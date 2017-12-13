@@ -1,12 +1,12 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="FRMClasse.aspx.vb" Inherits="EIBCATO.FRMClasse" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="FRMPlanoAula.aspx.vb" Inherits="EIBCATO.FRMPlanoAula" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <div class="tab-container z-depth-1">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Classe N.C.</a></li>
+                    <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Plano Aula</a></li>
                     <%--<li class="tab col s3"><a class="white-text waves-effect waves-light" href="#vestibulum">Vestibulum</a>
                 </li>--%>
                 </ul>
@@ -65,23 +65,32 @@
                                         </div>
 
                                         <div class="input-field col s12">
-                                            <div class=" col s6 cssTextForm">
-                                                <span class="flow-text">Código*</span>
+                                            <div class=" col s5 cssTextForm">
+                                                <span class="flow-text">Descrição*</span>
                                             </div>
                                             <div class="col s6">
-                                                <asp:TextBox runat="server" Width="100%" ID="TXT_Codigo"></asp:TextBox>
+                                                <asp:TextBox runat="server" Width="100%" ID="TXT_Descricao"></asp:TextBox>
+                                            </div>
+                                        </div>
+
+                                        <div class="input-field col s12">
+                                            <div class=" col s6 cssTextForm">
+                                                <span class="flow-text">Professor</span>
+                                            </div>
+                                            <div class="col s6">
+                                                <asp:TextBox runat="server" placeholder="Não Definido" Width="100%" ID="TXT_Professor"></asp:TextBox>
                                             </div>
                                         </div>
 
                                         <div class="input-field col s12">
                                             <div class=" col s2 cssTextForm">
-                                                <span class="flow-text">Início*</span>
+                                                <span class="flow-text">Data prevista*</span>
                                             </div>
 
                                             <div class="col s2">
                                                 <div data-min-view="2" data-date-format="dd/mm/yyyy" class="input-group date datetimepicker">
                                                     <asp:TextBox
-                                                        ID="TXT_PERIODO_INICIO"
+                                                        ID="TXT_DATA_PREVISTO"
                                                         class="form-control"
                                                         type="text"
                                                         runat="server" />
@@ -94,42 +103,13 @@
 
                                         <div class="input-field col s12">
                                             <div class=" col s2 cssTextForm">
-                                                <span class="flow-text">Término*</span>
+                                                <span class="flow-text">Hora Aula*</span>
                                             </div>
                                             <div class="col s2">
-                                                <div data-min-view="2" data-date-format="dd/mm/yyyy" class="input-group date datetimepicker">
-                                                    <asp:TextBox
-                                                        ID="TXT_PERIODO_FIM"
-                                                        class="form-control"
-                                                        type="text"
-                                                        runat="server" />
-                                                    <span class="input-group-addon btn btn-primary">
-                                                        <i class="icon-th mdi mdi-calendar"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="input-field col s12">
-                                            <div class=" col s2 cssTextForm">
-                                                <span class="flow-text">Carga Horária*</span>
-                                            </div>
-                                            <div class="col s2">
-                                                <asp:TextBox runat="server" Width="100%" ID="TXT_Carga"></asp:TextBox>
-                                            </div>
-                                        </div>
-
-                                        <div class="input-field col s12">
-                                            <div class=" col s6 cssTextForm">
-                                                <span class="flow-text">Professor*</span>
-                                            </div>
-
-                                            <div class="col s6">
-                                                <asp:DropDownList CssClass="select2 select2-hidden-accessible"
-                                                    TabIndex="-1"
-                                                    aria-hidden="true"
-                                                    runat="server" ID="DDL_Membresia_Professor" >
-                                                </asp:DropDownList>
+                                                <asp:TextBox runat="server" Width="100%" ID="TXT_Hora_Aula"></asp:TextBox>
+                                                <asp:Label class="text-info" runat="server" ID="LBL_CH_RESTANTE"></asp:Label>
+                                                <span class="text-info">Hora-aula acumulada
+                                                </span>
                                             </div>
                                         </div>
 
@@ -144,25 +124,13 @@
                                             </div>
                                         </div>
 
-                                        <div class="input-field col s12">
-                                            <div class=" col s3 cssTextForm">
-                                                <span class="flow-text ">Situação*</span>
-                                            </div>
-                                            <div class="col s3">
-                                                <asp:DropDownList CssClass="select2 select2-hidden-accessible"
-                                                    TabIndex="-1"
-                                                    aria-hidden="true"
-                                                    runat="server" ID="DDL_Status">
-                                                </asp:DropDownList>
-                                            </div>
-                                        </div>
 
                                         <hr />
                                         <%--Nome Table--%>
                                         <asp:Label ID="LBL_C001_ID" runat="server" Visible="False" />
                                         <asp:Label ID="LBL_Membresia_ID" runat="server" Visible="False" />
                                         <div class="panel-heading">
-                                            Lista de Classes
+                                            Lista de Planos de Aula
                                         </div>
                                         <%--Table--%>
                                         <div class="panel-body">
@@ -176,13 +144,11 @@
                                                                         <th class="sorting_asc" tabindex="0" aria-controls="table1" rowspan="1" colspan="1"
                                                                             aria-label="" style="width: 300px;">Descrição</th>
                                                                         <th class="sorting_asc" tabindex="0" aria-controls="table1" rowspan="1" colspan="1"
-                                                                            aria-label="" style="width: 100px;">Data Início</th>
+                                                                            aria-label="" style="width: 100px;">Data Prevista</th>
                                                                         <th class="sorting_asc" tabindex="0" aria-controls="table1" rowspan="1" colspan="1"
-                                                                            aria-label="" style="width: 100px;">Data Término</th>
+                                                                            aria-label="" style="width: 200px;">Professor</th>
                                                                         <th class="sorting_asc" tabindex="0" aria-controls="table1" rowspan="1" colspan="1"
-                                                                            aria-label="" style="width: 100px;">Situação</th>
-                                                                        <th class="sorting_asc" tabindex="0" aria-controls="table1" rowspan="1" colspan="1"
-                                                                            aria-label="" style="width: 150px;">Professor</th>
+                                                                            aria-label="" style="width: 100px;">Hora Aula</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -191,21 +157,19 @@
                                                             <ItemTemplate>
                                                                 <tr class="gradeA odd" role="row">
                                                                     <td class="sorting_1">
-                                                                        <asp:LinkButton runat="server" ID="link_select_item" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "ClasseId") %>'>
-                                                                        <%# DataBinder.Eval(Container.DataItem, "ClasseCodigo") %>
+                                                                        <asp:LinkButton runat="server" ID="link_select_item" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "PlanoId") %>'>
+                                                                        <%# DataBinder.Eval(Container.DataItem, "PlanoDescricao") %>
                                                                         </asp:LinkButton>
                                                                     </td>
                                                                     <td>
-                                                                        <%# CDate(DataBinder.Eval(Container.DataItem, "ClasseDataInicio")).GetDateTimeFormats.GetValue(0)  %>
+                                                                        <%# CDate(DataBinder.Eval(Container.DataItem, "PlanoDataPrevista")).GetDateTimeFormats.GetValue(0)  %>
+                                                                    </td>
+
+                                                                    <td>
+                                                                        <%# DataBinder.Eval(Container.DataItem, "PlanoProfessor") %>
                                                                     </td>
                                                                     <td>
-                                                                        <%# CDate(DataBinder.Eval(Container.DataItem, "ClasseDataFim")).GetDateTimeFormats.GetValue(0) %>
-                                                                    </td>
-                                                                    <td>
-                                                                        <%# DataBinder.Eval(Container.DataItem, "ClasseStatus") %>
-                                                                    </td>
-                                                                    <td>
-                                                                        <%# DataBinder.Eval(Container.DataItem, "Membresia.Usuario.UsuarioNome") %>
+                                                                        <%# DataBinder.Eval(Container.DataItem, "PlanoHoraAula") %>
                                                                     </td>
                                                                 </tr>
                                                             </ItemTemplate>
@@ -216,14 +180,11 @@
                                             </div>
                                         </div>
 
-
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
+
 </asp:Content>

@@ -17,6 +17,10 @@ Public Class FRMClasse
 
             Me.F_Inicializar()
 
+            If Not (Me.Obj_Seguranca.idClasse Is Nothing) Then
+                Me.exbirObjetoSelecionado(Me.Obj_Seguranca.idClasse)
+            End If
+
             'Carregar a grid
             Me.S_Carrega_GridPesquisa()
         Else
@@ -183,10 +187,7 @@ Public Class FRMClasse
             Me.CAMPO_MENSAGEM.Visible = False
 
             Dim _KeyFieldName As Integer = e.CommandArgument
-            Me.S_Limpa_Tela_TP_Cadastro()
-            Dim _Obj As New PIBICAS.Models.Classe
-            Me.S_Recupera_ID_Cadastro(_KeyFieldName, _Obj)
-            Me.setBancoTela(_Obj)
+            Me.exbirObjetoSelecionado(_KeyFieldName)
 
         Catch ex As Exception
             Me.LBL_Mensagem.Text = ex.Message
@@ -197,10 +198,18 @@ Public Class FRMClasse
         End If
     End Sub
 
+    Private Sub exbirObjetoSelecionado(_keyFieldName As Integer)
+        Me.S_Limpa_Tela_TP_Cadastro()
+        Dim _Obj As New PIBICAS.Models.Classe
+        Me.S_Recupera_ID_Cadastro(_keyFieldName, _Obj)
+        Me.setBancoTela(_Obj)
+    End Sub
+
     Private Sub setBancoTela(_obj As PIBICAS.Models.Classe)
 
         If Not (_obj.ClasseId = 0) Then
             Me.LBL_C001_ID.Text = _obj.ClasseId
+            Me.Obj_Seguranca.idClasse = _obj.ClasseId
         End If
 
         If Not (_obj.ClasseCargaHoraria Is Nothing) Then
@@ -280,4 +289,58 @@ Public Class FRMClasse
             Me.LBL_Mensagem.Text = ex.Message
         End Try
     End Sub
+
+    Private Sub ASP_MENU_ITEM_PLANO_AULA_Click(sender As Object, e As EventArgs) Handles ASP_MENU_ITEM_PLANO_AULA.Click
+        Me.F_EventoItemMenu("PlanoAula")
+    End Sub
+
+    Private Sub ASP_MENU_ITEM_ALUNOS_Click(sender As Object, e As EventArgs) Handles ASP_MENU_ITEM_ALUNOS.Click
+        Me.F_EventoItemMenu("Lista")
+    End Sub
+
+    Private Sub ASP_MENU_ITEM_CLASSE_Click(sender As Object, e As EventArgs) Handles ASP_MENU_ITEM_CLASSE.Click
+        Me.F_EventoItemMenu("Classe")
+    End Sub
+
+    Private Sub F_EventoItemMenu(ByVal _menu_item As String)
+
+        Try
+            LBL_Mensagem.Text = ""
+            CAMPO_MENSAGEM.Visible = False
+
+            If _menu_item = "PlanoAula" Then
+                Me.S_Redireciona("FRMPlanoAula.aspx")
+            ElseIf _menu_item = "Classe" Then
+                Me.S_Redireciona("FRMClasse.aspx")
+            ElseIf _menu_item = "Lista" Then
+                Me.S_Redireciona("ListaAlunoCNC.aspx")
+            End If
+
+        Catch ex As Exception
+            Me.LBL_Mensagem.Text = ex.Message
+        End Try
+
+        If Me.LBL_Mensagem.Text <> "" Then
+            Me.CAMPO_MENSAGEM.Visible = True
+        End If
+
+    End Sub
+
+    Private Sub S_Redireciona(ByVal formulario As String)
+
+        Try
+            If Not (LBL_C001_ID.Text = "" Or LBL_C001_ID.Text Is Nothing) Then
+                Response.Redirect(formulario, False)
+            ElseIf (formulario = "FRMClasse.aspx") Then
+                Response.Redirect(formulario, False)
+            Else
+                Throw New Exception("Selecione uma classe.")
+            End If
+
+        Catch ex As Exception
+            Throw
+        End Try
+    End Sub
+
+
 End Class
