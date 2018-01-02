@@ -7,10 +7,20 @@ Public Class CLSN_LISTA_ALUNO_CNC
 
     Public Obj_DataTable As DataTable
 
-    Friend Function F_Leitura_Grid(ByVal idClasse As Integer) As List(Of PIBICAS.Models.Aluno)
+    Friend Function F_Leitura_Grid(ByVal idClasse As Integer) As List(Of Object)
         Try
             Dim dao = New PIBICAS.Models.Dao.AlunoDAO
             Return dao.CarregarDados(idClasse).ToList
+        Catch ex As Exception
+            Throw
+        End Try
+    End Function
+
+
+    Friend Function F_Leitura_Grid_Diario(idClasse As Integer, idDiario As String) As List(Of Object)
+        Try
+            Dim dao = New PIBICAS.Models.Dao.AlunoDAO
+            Return dao.CarregarDadosDiario(idClasse, idDiario).ToList
         Catch ex As Exception
             Throw
         End Try
@@ -36,4 +46,5 @@ Public Class CLSN_LISTA_ALUNO_CNC
         End Try
 
     End Sub
+
 End Class

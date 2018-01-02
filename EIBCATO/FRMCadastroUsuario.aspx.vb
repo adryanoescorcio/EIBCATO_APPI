@@ -133,7 +133,7 @@ Public Class FRMCadastroUsuario
 
     Private Sub setBancoTelaMembresia(obj As Usuario)
         Dim _negocio As CLSN_MEMBRESIA = New CLSN_MEMBRESIA()
-        Dim _mem As Membresia = _negocio.pesquisarUsuarioId(obj.UsuarioId)
+        Dim _mem As Membresia = _negocio.pesquisarUsuarioId(Me.LBL_C001_ID.Text)
 
         If Not (_mem Is Nothing) Then
             Me.TXT_Matricula.Text = _mem.MembresiaMatricula

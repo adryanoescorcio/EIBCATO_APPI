@@ -209,7 +209,11 @@
                                                                         <th class="sorting_asc" tabindex="0" aria-controls="table1" rowspan="1" colspan="1"
                                                                             aria-label="" style="width: 200px;">Dicipulador</th>
                                                                         <th class="sorting_asc" tabindex="0" aria-controls="table1" rowspan="1" colspan="1"
-                                                                            aria-label="" style="width: 100px;">Situação</th>
+                                                                            aria-label="" style="width: 80px;">Situação</th>
+                                                                        <th class="sorting_asc" tabindex="0" aria-controls="table1" rowspan="1" colspan="1"
+                                                                            aria-label="" style="width: 80px;">Presenças</th>
+                                                                        <th class="sorting_asc" tabindex="0" aria-controls="table1" rowspan="1" colspan="1"
+                                                                            aria-label="" style="width: 80px;">Faltas</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -231,6 +235,12 @@
                                                                     </td>
                                                                     <td>
                                                                         <%# DataBinder.Eval(Container.DataItem, "AlunoSituacao") %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%# DataBinder.Eval(Container.DataItem, "presenca") %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%# DataBinder.Eval(Container.DataItem, "faltas") %>
                                                                     </td>
                                                                 </tr>
                                                             </ItemTemplate>

@@ -12,6 +12,10 @@ Public Class FRMPlanoAula
 
         Me.Obj_Seguranca = Session("Obj_Seguranca")
 
+        If (Me.Obj_Seguranca.StatusClasse = "Encerrado") Then
+            Me.bloquearTudo()
+        End If
+
         If Not IsPostBack Then
 
             Me.F_Inicializar()
@@ -21,6 +25,13 @@ Public Class FRMPlanoAula
         Else
             Dim _Obj As Object = ViewState.Values
         End If
+    End Sub
+
+    Private Sub bloquearTudo()
+        Me.BTN_Gravar.Visible = False
+        Me.BTN_Excluir.Visible = False
+        Me.CAMPO_MENSAGEM.Visible = True
+        Me.LBL_Mensagem.Text = "Não é possivel alterar os dados abaixo."
     End Sub
 
     Private Sub S_Carrega_GridPesquisa()
@@ -41,9 +52,12 @@ Public Class FRMPlanoAula
     Private Sub F_Inicializar()
 
     End Sub
-
     Private Sub ASP_MENU_ITEM_PLANO_AULA_Click(sender As Object, e As EventArgs) Handles ASP_MENU_ITEM_PLANO_AULA.Click
         Me.F_EventoItemMenu("PlanoAula")
+    End Sub
+
+    Private Sub ASP_MENU_ITEM_FREQUENCIA_Click(sender As Object, e As EventArgs) Handles ASP_MENU_FREQUENCIA.Click
+        Me.F_EventoItemMenu("Frequencia")
     End Sub
 
     Private Sub ASP_MENU_ITEM_ALUNOS_Click(sender As Object, e As EventArgs) Handles ASP_MENU_ITEM_ALUNOS.Click
@@ -66,6 +80,8 @@ Public Class FRMPlanoAula
                 Me.S_Redireciona("FRMClasse.aspx")
             ElseIf _menu_item = "Lista" Then
                 Me.S_Redireciona("ListaAlunoCNC.aspx")
+            ElseIf _menu_item = "Frequencia" Then
+                Me.S_Redireciona("FRMFrequencia.aspx")
             End If
 
         Catch ex As Exception
@@ -101,6 +117,10 @@ Public Class FRMPlanoAula
 
         Me.LBL_C001_ID.Text = ""
         Me.LBL_Membresia_ID.Text = ""
+
+        Me.BTN_Gravar.Visible = True
+        Me.BTN_Excluir.Visible = True
+
         Me.LBL_Mensagem.Text = ""
         Me.CAMPO_MENSAGEM.Visible = False
 
@@ -116,6 +136,10 @@ Public Class FRMPlanoAula
             Dim _Obj As New PIBICAS.Models.Plano
             Me.S_Recupera_ID_Cadastro(_KeyFieldName, _Obj)
             Me.setBancoTela(_Obj)
+
+            If (Me.Obj_Seguranca.StatusClasse = "Encerrado") Then
+                Me.bloquearTudo()
+            End If
 
         Catch ex As Exception
             Me.LBL_Mensagem.Text = ex.Message
@@ -292,5 +316,15 @@ Public Class FRMPlanoAula
             Me.CAMPO_MENSAGEM.Visible = True
             Me.LBL_Mensagem.Text = ex.Message
         End Try
+    End Sub
+
+    Private Sub BTN_Imprimir_Click(sender As Object, e As EventArgs) Handles BTN_Imprimir.Click
+
+        'Dim data_entrada_ As Date = CDate(Data_Entrada)
+        'Me.Obj_Seguranca._Obj_Relatorio.ListaParametroReport(0).P_C067_Conteudo = 1
+        Dim javaScript As String = "window.open('PDF_Relatorio.aspx');"
+
+        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Relatório", javaScript, True)
+
     End Sub
 End Class

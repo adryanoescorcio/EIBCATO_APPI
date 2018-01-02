@@ -159,7 +159,7 @@
 
             Me.S_Registra_Entrada()
 
-            Response.Redirect("FRM_Principal.aspx")
+            Response.Redirect("FRMClasse.aspx")
 
         Catch ex As Exception
             Me.LBL_Mensagem.Text = ex.Message

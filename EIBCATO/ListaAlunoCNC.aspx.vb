@@ -4,11 +4,19 @@
     Private Obj_Seguranca As Cls_Seguranca
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
         If Session("Obj_Seguranca") Is Nothing Then
             Response.Redirect("Default.aspx")
         End If
-
         Me.Obj_Seguranca = Session("Obj_Seguranca")
+
+        If (Me.Obj_Seguranca.StatusClasse = "Encerrado") Then
+            Me.bloquearTudo()
+        End If
+
+        If (Me.Obj_Seguranca.StatusClasse = "Encerrado") Then
+            Me.bloquearTudo()
+        End If
 
         If Not IsPostBack Then
 
@@ -19,6 +27,13 @@
         Else
             Dim _Obj As Object = ViewState.Values
         End If
+    End Sub
+
+    Private Sub bloquearTudo()
+        Me.BTN_Gravar.Visible = False
+        Me.BTN_Excluir.Visible = False
+        Me.CAMPO_MENSAGEM.Visible = True
+        Me.LBL_Mensagem.Text = "Não é possivel alterar os dados abaixo."
     End Sub
 
     Private Sub S_Carrega_GridPesquisa()
@@ -42,6 +57,14 @@
         Me.F_EventoItemMenu("PlanoAula")
     End Sub
 
+    Private Sub ASP_MENU_ITEM_FREQUENCIA_Click(sender As Object, e As EventArgs) Handles ASP_MENU_FREQUENCIA.Click
+        Me.F_EventoItemMenu("Frequencia")
+    End Sub
+
+    Private Sub ASP_MENU_ITEM_ALUNOS_Click(sender As Object, e As EventArgs) Handles ASP_MENU_ITEM_ALUNOS.Click
+        Me.F_EventoItemMenu("Lista")
+    End Sub
+
     Private Sub ASP_MENU_ITEM_CLASSE_Click(sender As Object, e As EventArgs) Handles ASP_MENU_ITEM_CLASSE.Click
         Me.F_EventoItemMenu("Classe")
     End Sub
@@ -58,6 +81,8 @@
                 Me.S_Redireciona("FRMClasse.aspx")
             ElseIf _menu_item = "Lista" Then
                 Me.S_Redireciona("ListaAlunoCNC.aspx")
+            ElseIf _menu_item = "Frequencia" Then
+                Me.S_Redireciona("FRMFrequencia.aspx")
             End If
 
         Catch ex As Exception
@@ -79,6 +104,7 @@
             Throw
         End Try
     End Sub
+
 
 
     Private Sub S_Carrega_DDL_Escolaridade()
@@ -122,6 +148,10 @@
 
         Me.LBL_C001_ID.Text = ""
         Me.LBL_Membresia_ID.Text = ""
+
+        Me.BTN_Gravar.Visible = True
+        Me.BTN_Excluir.Visible = True
+
         Me.LBL_Mensagem.Text = ""
         Me.CAMPO_MENSAGEM.Visible = False
 
@@ -137,6 +167,10 @@
             Dim _Obj As New PIBICAS.Models.Aluno
             Me.S_Recupera_ID_Cadastro(_KeyFieldName, _Obj)
             Me.setBancoTela(_Obj)
+
+            If (Me.Obj_Seguranca.StatusClasse = "Encerrado") Then
+                Me.bloquearTudo()
+            End If
 
         Catch ex As Exception
             Me.LBL_Mensagem.Text = ex.Message
@@ -360,4 +394,5 @@
             Me.LBL_Mensagem.Text = ex.Message
         End Try
     End Sub
+
 End Class

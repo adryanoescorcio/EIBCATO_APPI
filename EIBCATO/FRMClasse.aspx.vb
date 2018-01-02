@@ -110,8 +110,27 @@ Public Class FRMClasse
         Try
             Dim _obj As PIBICAS.Models.Classe = New PIBICAS.Models.Classe
             Dim _negocio As CLSN_CLASSE = New CLSN_CLASSE
+
             Me.setTelaBanco(_obj)
+
+            If (Me.DDL_Status.SelectedValue = "Encerrado") Then
+                Dim _alunos As CLSN_LISTA_ALUNO_CNC = New CLSN_LISTA_ALUNO_CNC
+                Dim list As List(Of Object) = _alunos.F_Leitura_Grid(Me.LBL_C001_ID.Text)
+
+                If (list.Count > 0) Then
+                    If (list.FindAll(Function(x) x.AlunoSituacao = "Cursando").Count > 0) Then
+                        Throw New Exception("Defina a situação dos alunos que ainda estão 'Cursando'.")
+                    End If
+                Else
+                    Throw New Exception("Você não pode encerra uma turma sem alunos.")
+                End If
+            End If
+
             _negocio.inserirAtualizarObjeto(_obj)
+
+            If Not (Me.LBL_C001_ID.Text = "") Then
+
+            End If
 
         Catch ex As Exception
             Throw
@@ -189,6 +208,13 @@ Public Class FRMClasse
             Dim _KeyFieldName As Integer = e.CommandArgument
             Me.exbirObjetoSelecionado(_KeyFieldName)
 
+            If (Me.DDL_Status.SelectedValue = "Encerrado") Then
+                Me.Obj_Seguranca.StatusClasse = "Encerrado"
+                Me.bloquearTudo()
+            Else
+                Me.Obj_Seguranca.StatusClasse = "Ativo"
+            End If
+
         Catch ex As Exception
             Me.LBL_Mensagem.Text = ex.Message
         End Try
@@ -196,6 +222,13 @@ Public Class FRMClasse
         If LBL_Mensagem.Text <> "" Then
             Me.CAMPO_MENSAGEM.Visible = True
         End If
+    End Sub
+
+    Private Sub bloquearTudo()
+        Me.BTN_Gravar.Visible = False
+        Me.BTN_Excluir.Visible = False
+        Me.CAMPO_MENSAGEM.Visible = True
+        Me.LBL_Mensagem.Text = "Não é possivel alterar os dados abaixo."
     End Sub
 
     Private Sub exbirObjetoSelecionado(_keyFieldName As Integer)
@@ -266,6 +299,13 @@ Public Class FRMClasse
 
         Me.DDL_Status.SelectedIndex = -1
         Me.DDL_Membresia_Professor.SelectedIndex = -1
+
+        Me.BTN_Excluir.Visible = True
+        Me.BTN_Gravar.Visible = True
+
+        Me.LBL_Mensagem.Text = ""
+        Me.CAMPO_MENSAGEM.Visible = False
+
     End Sub
 
     Private Sub BTN_Limpar_Click(sender As Object, e As EventArgs) Handles BTN_Limpar.Click
@@ -294,6 +334,10 @@ Public Class FRMClasse
         Me.F_EventoItemMenu("PlanoAula")
     End Sub
 
+    Private Sub ASP_MENU_ITEM_FREQUENCIA_Click(sender As Object, e As EventArgs) Handles ASP_MENU_FREQUENCIA.Click
+        Me.F_EventoItemMenu("Frequencia")
+    End Sub
+
     Private Sub ASP_MENU_ITEM_ALUNOS_Click(sender As Object, e As EventArgs) Handles ASP_MENU_ITEM_ALUNOS.Click
         Me.F_EventoItemMenu("Lista")
     End Sub
@@ -314,6 +358,8 @@ Public Class FRMClasse
                 Me.S_Redireciona("FRMClasse.aspx")
             ElseIf _menu_item = "Lista" Then
                 Me.S_Redireciona("ListaAlunoCNC.aspx")
+            ElseIf _menu_item = "Frequencia" Then
+                Me.S_Redireciona("FRMFrequencia.aspx")
             End If
 
         Catch ex As Exception

@@ -50,6 +50,11 @@
                                                 <i class="material-icons left">delete_forever</i>
                                                 Excluir</asp:LinkButton>
 
+                                            <asp:LinkButton ID="BTN_Imprimir" runat="server"
+                                                CssClass="btn waves-effect waves-light"> 
+                                                <i class="material-icons left">delete_forever</i>
+                                                Imprimir</asp:LinkButton>
+
                                         </div>
 
                                         <div runat="server" id="CAMPO_MENSAGEM" visible="false">
