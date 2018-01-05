@@ -213,7 +213,6 @@ Public Class FRMFrequencia
             Dim total_alunos = GridPesquisa_LST_ALUNO.Items.Count - 1
 
             While total_alunos >= 0
-
                 'Pegar o último item
                 Dim item As RepeaterItem = GridPesquisa_LST_ALUNO.Items.Item(total_alunos)
                 Dim itemCheck As CheckBox = item.FindControl("CheckBox1") 'Passa para uma variavel label local
@@ -335,5 +334,17 @@ Public Class FRMFrequencia
         Catch ex As Exception
             Throw
         End Try
+    End Sub
+
+    Private Sub BTN_Imprimir_Click(sender As Object, e As EventArgs) Handles BTN_Imprimir.Click
+
+        Dim javaScript As String = "window.open('relatorios/ReportFrequenciaAluno');"
+
+        ScriptManager.RegisterStartupScript(Me, Page.GetType, "Relatório", javaScript, True)
+
+    End Sub
+
+    Private Sub GridPesquisa_LST_ALUNO_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles GridPesquisa_LST_ALUNO.ItemCommand
+
     End Sub
 End Class

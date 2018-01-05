@@ -100,6 +100,10 @@
                                                 <i class="material-icons left">save</i>
                                                 Gravar</asp:LinkButton>
 
+                                            <asp:LinkButton ID="BTN_Imprimir" runat="server"
+                                                CssClass="btn waves-effect waves-light"> 
+                                                <i class="material-icons left">delete_forever</i>
+                                                Imprimir</asp:LinkButton>
                                         </div>
 
                                         <div runat="server" id="CAMPO_MENSAGEM" visible="false">
@@ -183,7 +187,7 @@
                                         <div class="panel-body">
                                             <div class="row be-datatable-body">
                                                 <div class="col-sm-12">
-                                                    <table id="table1" class="table table-striped table-hover table-fw-widget dataTable no-footer" role="grid" aria-describedby="table1_info">
+                                                    <table id="table4" class="table table-striped table-hover table-fw-widget dataTable no-footer" role="grid" aria-describedby="table1_info">
                                                         <asp:Repeater ID="GridPesquisa_LST_ALUNO" runat="server">
                                                             <HeaderTemplate>
                                                                 <thead>
@@ -205,7 +209,7 @@
                                                                         <asp:CheckBox ID="CheckBox1"
                                                                             Text='<%# DataBinder.Eval(Container.DataItem, "AlunoNome") %>'
                                                                             TextAlign="Right"
-                                                                            Checked="false"
+                                                                            Checked="true"
                                                                             runat="server" />
                                                                     </td>
                                                                     <td>

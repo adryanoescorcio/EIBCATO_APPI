@@ -115,7 +115,7 @@
 
                                         <div class="input-field col s12">
                                             <div class=" col s3 cssTextForm">
-                                                <span class="flow-text">Celular*</span>
+                                                <span class="flow-text">Celular</span>
                                             </div>
                                             <div class="col s3">
                                                 <asp:TextBox runat="server" Width="100%"  data-mask="tel" placeholder="(98)99999-9999" ID="TXT_Celular"></asp:TextBox>

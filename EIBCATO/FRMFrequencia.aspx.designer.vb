@@ -131,6 +131,15 @@ Partial Public Class FRMFrequencia
     Protected WithEvents BTN_Gravar As Global.System.Web.UI.WebControls.LinkButton
     
     '''<summary>
+    '''BTN_Imprimir control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents BTN_Imprimir As Global.System.Web.UI.WebControls.LinkButton
+    
+    '''<summary>
     '''CAMPO_MENSAGEM control.
     '''</summary>
     '''<remarks>

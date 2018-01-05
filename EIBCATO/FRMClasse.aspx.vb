@@ -53,7 +53,7 @@ Public Class FRMClasse
         Dim _negocio As CLSN_MEMBRESIA = New CLSN_MEMBRESIA
         Me.DDL_Membresia_Professor.Items.Add(" ")
         Me.DDL_Membresia_Professor.DataSource = _negocio.listaMembrosAtivos(1)
-        Me.DDL_Membresia_Professor.DataValueField = "UsuarioId"
+        Me.DDL_Membresia_Professor.DataValueField = "MembresiaId"
         Me.DDL_Membresia_Professor.DataTextField = "UsuarioNomePerfil"
         Me.DDL_Membresia_Professor.DataBind()
 

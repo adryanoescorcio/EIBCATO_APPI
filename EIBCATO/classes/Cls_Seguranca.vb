@@ -9,13 +9,6 @@ Public Class Cls_Seguranca
     Public C005_Id As Integer
 
     Public F_Parametro As String
-    Private ObjT_Relatorio As RelatorioSet = New RelatorioSet()
-
-    Public ReadOnly Property _Obj_Relatorio As RelatorioSet
-        Get
-            Return Me.ObjT_Relatorio
-        End Get
-    End Property
 
     ' Variáveis de sessão para upload de arquivos
     Public AFUp_Documento_Ext As String
@@ -225,86 +218,5 @@ Public Class Cls_Seguranca
     Friend Function ValidarCPF(_cpf As String) As Boolean
         Return F_CPF_Valido(_cpf)
     End Function
-
-    Public Sub S_Processa_ReportDocument(ByRef pm_crReportDocument As CrystalDecisions.CrystalReports.Engine.ReportDocument,
-                                         ByRef pm_Info As CrystalDecisions.Shared.ConnectionInfo,
-                                         ByVal pm_Relatorio As String
-                                         )
-        Try
-            Dim _Usuario = ConfigurationManager.AppSettings("Usuario")
-            Dim _Senha = ConfigurationManager.AppSettings("Senha")
-
-            '---------------------------------------------
-
-            Dim _Relatorio As String = Me._Obj_Relatorio.P_C008_Caminho & Me._Obj_Relatorio.P_C008_Executar & ".rpt"
-
-            pm_crReportDocument.Load(pm_Relatorio)
-
-            Dim LoginBanco As New CrystalDecisions.Shared.TableLogOnInfo
-
-            Dim strDataBase As CrystalDecisions.CrystalReports.Engine.Database
-            Dim strTabela As CrystalDecisions.CrystalReports.Engine.Table
-            Dim strTabelas As CrystalDecisions.CrystalReports.Engine.Tables
-
-            pm_Info.DatabaseName = "IBCA"
-            pm_Info.UserID = _Usuario
-            pm_Info.Password = _Senha
-
-            strDataBase = pm_crReportDocument.Database
-            strTabelas = strDataBase.Tables
-
-            For Each strTabela In strTabelas
-                LoginBanco = strTabela.LogOnInfo
-                LoginBanco.ConnectionInfo = pm_Info
-                strTabela.ApplyLogOnInfo(LoginBanco)
-            Next
-
-            Dim _Count As Integer = 0
-
-            Dim _Parametros As New CrystalDecisions.Shared.ParameterFields
-
-            While _Count < Me._Obj_Relatorio.ListaParametroReport.Count
-
-                Dim _Parametro_Campo As New ParameterField
-                Dim _Parametro_Valor As New ParameterDiscreteValue
-
-                _Parametro_Campo.ParameterFieldName = Me._Obj_Relatorio.ListaParametroReport(_Count).P_C067_CAMPO
-
-                If Me._Obj_Relatorio.ListaParametroReport(_Count).P_C067_TIPO = "Texto" Then
-                    _Parametro_Valor.Value = Me._Obj_Relatorio.ListaParametroReport(_Count).P_C067_Conteudo
-                ElseIf Me._Obj_Relatorio.ListaParametroReport(_Count).P_C067_TIPO = "Data" Then
-
-                    If Not IsDate(Me._Obj_Relatorio.ListaParametroReport(_Count).P_C067_Conteudo) Then
-
-                        If Me._Obj_Relatorio.ListaParametroReport(_Count).P_C067_LABEL.ToUpper = "DATA INÍCIO" Then
-                            _Parametro_Valor.Value = "01/01/1990"
-                        Else
-                            _Parametro_Valor.Value = Date.Now.Day & "/" & Date.Now.Month & "/" & Date.Now.Year
-                        End If
-
-                    Else
-                        _Parametro_Valor.Value = CDate(Me._Obj_Relatorio.ListaParametroReport(_Count).P_C067_Conteudo)
-                    End If
-
-                Else
-                    _Parametro_Valor.Value = Me._Obj_Relatorio.ListaParametroReport(_Count).P_C067_Conteudo
-                End If
-
-                _Parametro_Campo.CurrentValues.Add(_Parametro_Valor)
-
-                _Parametros.Add(_Parametro_Campo)
-
-                pm_crReportDocument.ParameterFields(_Count).CurrentValues = _Parametro_Campo.CurrentValues
-
-
-                _Count = _Count + 1
-
-            End While
-
-        Catch ex As Exception
-            Throw
-        End Try
-
-    End Sub
 
 End Class
