@@ -52,8 +52,8 @@
 
                                             <asp:LinkButton ID="BTN_Imprimir" runat="server"
                                                 CssClass="btn waves-effect waves-light"> 
-                                                <i class="material-icons left">delete_forever</i>
-                                                Imprimir</asp:LinkButton>
+                                                <i class="material-icons left">description</i>
+                                                Rel. Crono Plano</asp:LinkButton>
 
                                         </div>
 
