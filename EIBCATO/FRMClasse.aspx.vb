@@ -14,7 +14,6 @@ Public Class FRMClasse
         Me.Obj_Seguranca = Session("Obj_Seguranca")
 
         If Not IsPostBack Then
-
             Me.F_Inicializar()
 
             If Not (Me.Obj_Seguranca.idClasse Is Nothing) Then

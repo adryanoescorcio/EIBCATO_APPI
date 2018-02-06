@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <head runat="server">
+<head runat="server">
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <asp:ContentPlaceHolder ID="Head" runat="server" />
 
-    <title>E-IBCA - Igreja Batista Catedral de Adoração</title>
+    <title>E-IBCA - Igreja Batista Catedral da Adoração</title>
 
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -43,10 +43,17 @@
                         <asp:ContentPlaceHolder ID="Cabacalhoesqurdo" runat="server">
                             <div class="DivMargemTopo3">
                                 <asp:Image runat="server" CssClass="imagemLogo" Height="75px" ImageUrl="Imagens/Logoempresa.png"></asp:Image>
-                                <h4 style="float: right; color: aliceblue; 
-                                    text-shadow: 5px 5px 8px #333;margin-top:30px;margin-left:30px">
-                                    | Igreja Batista Catedral de Adoração
-                                </h4>
+                                <div style="float: right">
+                                    <div>
+                                        <div style="float: right; color: aliceblue; font-size:20px; text-shadow: 5px 5px 8px #333; margin-top: 30px; margin-left: 30px">| Igreja Batista Catedral da Adoração
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div style="float: left; color: aliceblue; text-shadow: 5px 5px 8px #333;margin-left:50px;margin-bottom:5px">
+                                            <asp:Label runat="server" ID="LBL_Modulo">Cada casa uma Igreja, cada Membro um Ministro.</asp:Label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </asp:ContentPlaceHolder>
                     </div>
@@ -78,7 +85,7 @@
                                     <li style="margin-left: 10px;">
                                         <div class="DivFontUsuario">
                                             <div>
-                                                 <asp:Label runat="server" ID="LBL_Acesso" CssClass="LabelSis"></asp:Label>
+                                                <asp:Label runat="server" ID="LBL_Acesso" CssClass="LabelSis"></asp:Label>
                                                 <br />
                                                 <asp:Label runat="server" ID="LBL_Nome" CssClass="LabelSis"></asp:Label>
                                             </div>
@@ -88,7 +95,7 @@
                                             <div>
                                                 <asp:Label runat="server" ID="LBL_Lotacao" CssClass="LabelSis"></asp:Label>
                                             </div>
-                                            <div style="margin-left:250px;position:fixed">
+                                            <div style="margin-left: 250px; position: fixed">
                                                 <a href="../default.aspx" class="waves-effect waves-red btn" runat="server" id="BNT_SAIR">
                                                     <i class="material-icons left">power_settings_new</i>
                                                     Sair
@@ -124,7 +131,6 @@
                                 <div id="mySidenav" class="sidenav">
                                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                                     <div runat="server" id="_menu_lista">
-
                                     </div>
                                 </div>
 
@@ -141,16 +147,16 @@
                     <asp:ScriptManager ID="ScriptManager1" runat="server">
                     </asp:ScriptManager>
                     <div runat="server" id="CAMPO_MENSAGEM" visible="false">
-                            <label style="height:10px"></label>
-                            <div role="alert" class="alert alert-danger alert-icon alert-icon-border alert-dismissible">
-                                <div class="icon"><span class="mdi mdi-close-circle-o"></span></div>
-                                <div class="message">
-                                    <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true" class="mdi mdi-close"></span></button>
-                                    <strong>Atenção!</strong>
-                                    <asp:Label runat="server" ID="LBL_Mensagem"></asp:Label>
-                                </div>
+                        <label style="height: 10px"></label>
+                        <div role="alert" class="alert alert-danger alert-icon alert-icon-border alert-dismissible">
+                            <div class="icon"><span class="mdi mdi-close-circle-o"></span></div>
+                            <div class="message">
+                                <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true" class="mdi mdi-close"></span></button>
+                                <strong>Atenção!</strong>
+                                <asp:Label runat="server" ID="LBL_Mensagem"></asp:Label>
                             </div>
                         </div>
+                    </div>
                     <asp:ContentPlaceHolder ID="MainContent" runat="server">
                         <div>
                         </div>
@@ -159,7 +165,7 @@
             </div>
             <div class="clr-royalblue4">
                 <div id="Div1" class="panel-footer ">
-                    <a style="color: whitesmoke" target="_blank" href="http://www.saude.ma.gov.br">Sistema Eletrônico da Igreja Batista Catedral de Adoração</a> | Tel. (98) 9999-9999       
+                    <a style="color: whitesmoke" target="_blank" href="http://www.saude.ma.gov.br">Sistema Eletrônico da Igreja Batista Catedral da Adoração</a> | Tel. (98) 9999-9999       
                 </div>
             </div>
 

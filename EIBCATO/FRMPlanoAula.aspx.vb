@@ -320,7 +320,7 @@ Public Class FRMPlanoAula
 
     Private Sub BTN_Imprimir_Click(sender As Object, e As EventArgs) Handles BTN_Imprimir.Click
 
-        Dim javaScript As String = "window.open('relatorios/ReportPlanoClasse');"
+        Dim javaScript As String = "window.open('relatorios/ReportPlanoClasse.aspx');"
 
         ScriptManager.RegisterStartupScript(Me, Page.GetType, "Relatório", javaScript, True)
 

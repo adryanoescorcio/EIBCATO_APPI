@@ -725,10 +725,10 @@
           <Source>Embedded</Source>
           <Value>Logoempresa2</Value>
           <Sizing>FitProportional</Sizing>
-          <Top>0.38978cm</Top>
-          <Left>0.37953cm</Left>
-          <Height>3.64313cm</Height>
-          <Width>3.45792cm</Width>
+          <Top>0.97228cm</Top>
+          <Left>0.44567cm</Left>
+          <Height>3.06063cm</Height>
+          <Width>3.39178cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -744,7 +744,9 @@
               <TextRuns>
                 <TextRun>
                   <Value>=Now()</Value>
-                  <Style />
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style>
@@ -800,6 +802,18 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
+        <Line Name="Line3">
+          <Top>0.90172cm</Top>
+          <Left>0.39275cm</Left>
+          <Height>0cm</Height>
+          <Width>15.9112cm</Width>
+          <ZIndex>5</ZIndex>
+          <Style>
+            <Border>
+              <Style>Solid</Style>
+            </Border>
+          </Style>
+        </Line>
       </ReportItems>
       <Style>
         <Border>
@@ -823,7 +837,7 @@
             </Border>
           </Style>
         </Line>
-        <Textbox Name="PageNumber">
+        <Textbox Name="PageNumber2">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
@@ -831,18 +845,55 @@
               <TextRuns>
                 <TextRun>
                   <Value>=Globals!PageNumber</Value>
-                  <Style />
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style />
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>PageNumber</rd:DefaultName>
-          <Top>0.35278cm</Top>
-          <Left>12.82912cm</Left>
+          <Top>0.39648cm</Top>
+          <Left>13.80395cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox5">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Endereço: Rua Boa Esperança, 125-E, Residencial Pinheiros - Cohama.
+São Luis/MA CNPJ 07.278.458/0001-56</Value>
+                  <Style>
+                    <FontSize>9pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox5</rd:DefaultName>
+          <Top>0.34823cm</Top>
+          <Left>0.44567cm</Left>
+          <Height>1.18208cm</Height>
+          <Width>13.18189cm</Width>
+          <ZIndex>2</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>

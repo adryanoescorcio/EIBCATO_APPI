@@ -1325,6 +1325,7 @@
     <Content Include="FRMClasse.aspx" />
     <Content Include="FRMFrequencia.aspx" />
     <Content Include="FRMPlanoAula.aspx" />
+    <Content Include="FRM_FeedNoticias.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -2075,6 +2076,13 @@
     </Compile>
     <Compile Include="FRMPlanoAula.aspx.vb">
       <DependentUpon>FRMPlanoAula.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="FRM_FeedNoticias.aspx.designer.vb">
+      <DependentUpon>FRM_FeedNoticias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FRM_FeedNoticias.aspx.vb">
+      <DependentUpon>FRM_FeedNoticias.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Global.asax.vb">

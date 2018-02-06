@@ -41,6 +41,15 @@ Partial Public Class SiteMaster
     Protected WithEvents Cabacalhoesqurdo As Global.System.Web.UI.WebControls.ContentPlaceHolder
     
     '''<summary>
+    '''LBL_Modulo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents LBL_Modulo As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''LBL_Patente_Sigla control.
     '''</summary>
     '''<remarks>
