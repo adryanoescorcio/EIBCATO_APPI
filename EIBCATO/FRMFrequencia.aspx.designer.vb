@@ -77,15 +77,6 @@ Partial Public Class FRMFrequencia
     Protected WithEvents ASP_MENU_ITEM_PLANO_AULA As Global.System.Web.UI.WebControls.LinkButton
     
     '''<summary>
-    '''ASP_MENU_RELATORIO control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ASP_MENU_RELATORIO As Global.System.Web.UI.WebControls.LinkButton
-    
-    '''<summary>
     '''LBL_C001_ID control.
     '''</summary>
     '''<remarks>

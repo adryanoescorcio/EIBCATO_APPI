@@ -27,8 +27,6 @@
 
                                     <asp:LinkButton runat="server" ID="ASP_MENU_ITEM_PLANO_AULA">Plano Aula</asp:LinkButton>
 
-                                    <asp:LinkButton runat="server" ID="ASP_MENU_RELATORIO">Relatório</asp:LinkButton>
-
                                 </div>
 
                             </div>

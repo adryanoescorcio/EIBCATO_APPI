@@ -344,7 +344,7 @@ Public Class FRMCadastroUsuario
 
         obj.MembresiaMatricula = Me.TXT_Matricula.Text
         obj.MembresiaStatus = "Ativo"
-        obj.MembresiaUsuarioId = Me.Obj_Seguranca._usuario.UsuarioId
+        obj.MembresiaUsuarioId = Me.LBL_C001_ID.Text
 
     End Sub
 

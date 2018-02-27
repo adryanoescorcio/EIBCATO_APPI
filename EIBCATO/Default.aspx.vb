@@ -4,7 +4,7 @@
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
-
+            Me.Form.DefaultButton = "BTN_LoginGo"
             If IsPostBack Then
 
                 Me.Obj_Seguranca = New Cls_Seguranca

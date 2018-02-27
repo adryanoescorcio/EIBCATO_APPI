@@ -347,4 +347,8 @@ Public Class FRMFrequencia
     Private Sub GridPesquisa_LST_ALUNO_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles GridPesquisa_LST_ALUNO.ItemCommand
 
     End Sub
+
+    Private Sub BTN_Limpar_Click(sender As Object, e As EventArgs) Handles BTN_Limpar.Click
+        S_Limpa_Tela_TP_Cadastro()
+    End Sub
 End Class

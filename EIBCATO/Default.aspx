@@ -89,12 +89,10 @@
                             </div>
                             <label style="height: 2px"></label>
                             <div class="row">
-                                <div class="input-field col s6 m6 l6">
-                                    <p class="margin medium-small"><a href="page-register.html">Solicitar Acesso</a></p>
-                                </div>
+                                
                                 <label style="height: 5px"></label>
                                 <div class="input-field col s6 m6 l6">
-                                    <p class="margin right-align medium-small"><a href="page-forgot-password.html">Esqueceu a senha?</a></p>
+                                    <%--<p class="margin right-align medium-small"><a href="page-forgot-password.html">Esqueceu a senha?</a></p>--%>
                                 </div>
                             </div>
                         </div>
