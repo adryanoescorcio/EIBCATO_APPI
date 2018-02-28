@@ -260,10 +260,12 @@ Public Class FRMCadastroUsuario
             End If
 
             Me.LBL_Mensagem.Text = "Operação realizada com sucesso"
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-success alert-icon alert-dismissible")
             Me.CAMPO_MENSAGEM.Visible = True
 
         Catch ex As Exception
             Me.CAMPO_MENSAGEM.Visible = True
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-danger alert-icon alert-dismissible")
             Me.LBL_Mensagem.Text = ex.Message
         End Try
 
@@ -365,6 +367,10 @@ Public Class FRMCadastroUsuario
             Throw New Exception("O campo CPF é obrigatório.")
         End If
 
+        If (Me.existeCpf()) Then
+            Throw New Exception("O Cpf já existe")
+        End If
+
         If (Me.Obj_Seguranca.ValidarCPF(Me.TXT_C001_Cpf.Text.Substring(0, 9))) Then
             Throw New Exception("O campo CPF é inválido.")
         End If
@@ -405,6 +411,24 @@ Public Class FRMCadastroUsuario
 
     End Function
 
+    Private Function existeCpf() As Boolean
+        Try
+            Dim _negocio As CLSN_USUARIO = New CLSN_USUARIO
+            Dim Usuario = _negocio.pesquisarCPF(TXT_C001_Cpf.Text)
+
+            If (Usuario Is Nothing) Then
+                Throw New Exception("Já existe um usuário cadastro com este cpf.")
+            End If
+
+        Catch ex As Exception
+            Me.CAMPO_MENSAGEM.Visible = True
+            Me.LBL_Mensagem.Text = ex.Message
+        End Try
+
+        Return False
+
+    End Function
+
     Private Sub BTN_Limpar_Click(sender As Object, e As EventArgs) Handles BTN_Limpar.Click
         Me.S_Limpa_Tela_TP_Cadastro()
     End Sub
@@ -421,8 +445,13 @@ Public Class FRMCadastroUsuario
                 Throw New Exception("Selecione um registro")
             End If
 
+            Me.LBL_Mensagem.Text = "Operação realizada com sucesso"
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-success alert-icon alert-dismissible")
+            Me.CAMPO_MENSAGEM.Visible = True
+
         Catch ex As Exception
             Me.CAMPO_MENSAGEM.Visible = True
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-danger alert-icon alert-dismissible")
             Me.LBL_Mensagem.Text = ex.Message
         End Try
     End Sub

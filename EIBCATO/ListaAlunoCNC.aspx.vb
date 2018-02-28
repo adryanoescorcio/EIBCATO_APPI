@@ -130,6 +130,7 @@
         Me.DDL_SITUACAO.Items.Clear()
 
         Me.DDL_SITUACAO.Items.Add("Cursando")
+        Me.DDL_SITUACAO.Items.Add("Aprovado")
         Me.DDL_SITUACAO.Items.Add("Evadido")
         Me.DDL_SITUACAO.Items.Add("Reprovado")
 
@@ -141,6 +142,7 @@
         Me.TXT_Celular.Text = ""
         Me.TXT_CPF.Text = ""
         Me.TXT_DATA_NASC.Text = ""
+        Me.TXT_DATA_MATRICULA.Text = ""
         Me.TXT_Dicipulador.Text = ""
         Me.TXT_Equipe.Text = ""
         Me.TXT_NOME.Text = ""
@@ -199,6 +201,10 @@
             Me.TXT_DATA_NASC.Text = _obj.AlunoDataNascimento
         End If
 
+        If Not (_obj.AlunoDataMatricula.ToString = "") Then
+            Me.TXT_DATA_MATRICULA.Text = _obj.AlunoDataMatricula
+        End If
+
         If Not (_obj.AlunoCelular1 Is Nothing) Then
             Me.TXT_Celular.Text = _obj.AlunoCelular1
         End If
@@ -251,10 +257,12 @@
             End If
 
             Me.LBL_Mensagem.Text = "Operação realizada com sucesso"
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-success alert-icon alert-dismissible")
             Me.CAMPO_MENSAGEM.Visible = True
 
         Catch ex As Exception
             Me.CAMPO_MENSAGEM.Visible = True
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-danger alert-icon alert-dismissible")
             Me.LBL_Mensagem.Text = ex.Message
         End Try
 
@@ -295,6 +303,7 @@
 
         obj.AlunoCelula = Me.TXT_Celula.Text
         obj.AlunoDataNascimento = CDate(Me.TXT_DATA_NASC.Text).GetDateTimeFormats.GetValue(47)
+        obj.AlunoDataMatricula = CDate(Me.TXT_DATA_MATRICULA.Text).GetDateTimeFormats.GetValue(47)
         obj.AlunoCelular1 = Me.TXT_Celular.Text.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", "")
         obj.AlunoCPF = Me.TXT_CPF.Text
         obj.AlunoEquipe = Me.TXT_Equipe.Text
@@ -319,6 +328,10 @@
 
         If (Me.TXT_DATA_NASC.Text Is Nothing) Then
             Throw New Exception("O campo Data nascimento é obrigatório.")
+        End If
+
+        If (Me.TXT_DATA_MATRICULA.Text Is Nothing) Then
+            Throw New Exception("O campo Data matricula é obrigatório.")
         End If
 
         If (Me.TXT_CPF.Text Is Nothing) Then
@@ -389,10 +402,16 @@
                 Throw New Exception("Selecione um registro")
             End If
 
+            Me.LBL_Mensagem.Text = "Operação realizada com sucesso"
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-success alert-icon alert-dismissible")
+            Me.CAMPO_MENSAGEM.Visible = True
+
         Catch ex As Exception
             Me.CAMPO_MENSAGEM.Visible = True
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-danger alert-icon alert-dismissible")
             Me.LBL_Mensagem.Text = ex.Message
         End Try
+
     End Sub
 
 End Class

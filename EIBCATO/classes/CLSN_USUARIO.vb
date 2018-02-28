@@ -53,4 +53,9 @@ Public Class CLSN_USUARIO
         dao.Delete(_id)
     End Sub
 
+    Friend Function pesquisarCPF(text As String) As Usuario
+        Dim dao = New PIBICAS.Models.Dao.UsuarioDAO
+        Return dao.PesquisarPorCPF(text)
+    End Function
+
 End Class

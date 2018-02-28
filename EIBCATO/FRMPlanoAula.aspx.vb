@@ -214,10 +214,12 @@ Public Class FRMPlanoAula
             End If
 
             Me.LBL_Mensagem.Text = "Operação realizada com sucesso"
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-success alert-icon alert-dismissible")
             Me.CAMPO_MENSAGEM.Visible = True
 
         Catch ex As Exception
             Me.CAMPO_MENSAGEM.Visible = True
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-danger alert-icon alert-dismissible")
             Me.LBL_Mensagem.Text = ex.Message
         End Try
 
@@ -312,8 +314,13 @@ Public Class FRMPlanoAula
                 Throw New Exception("Selecione um registro")
             End If
 
+            Me.LBL_Mensagem.Text = "Operação realizada com sucesso"
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-success alert-icon alert-dismissible")
+            Me.CAMPO_MENSAGEM.Visible = True
+
         Catch ex As Exception
             Me.CAMPO_MENSAGEM.Visible = True
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-danger alert-icon alert-dismissible")
             Me.LBL_Mensagem.Text = ex.Message
         End Try
     End Sub

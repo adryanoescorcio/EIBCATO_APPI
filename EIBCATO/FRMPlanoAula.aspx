@@ -55,15 +55,11 @@
 
                                         </div>
 
-                                        <div runat="server" id="CAMPO_MENSAGEM" visible="false">
-                                            <label style="height: 10px"></label>
-                                            <div role="alert" class="alert alert-danger alert-icon alert-icon-border alert-dismissible">
-                                                <div class="icon"><span class="mdi mdi-close-circle-o"></span></div>
-                                                <div class="message">
-                                                    <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true" class="mdi mdi-close"></span></button>
-                                                    <strong>Atenção!</strong>
-                                                    <asp:Label runat="server" ID="LBL_Mensagem"></asp:Label>
-                                                </div>
+                                        <div runat="server" id="CAMPO_MENSAGEM" role="alert" visible="false">
+                                            <div class="icon"><span class="mdi mdi-close-circle-o"></span></div>
+                                            <div class="message">
+                                                <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true" class="mdi mdi-close"></span></button>
+                                                <asp:Label runat="server" ID="LBL_Mensagem"></asp:Label>
                                             </div>
                                         </div>
 

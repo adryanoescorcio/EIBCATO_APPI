@@ -192,15 +192,16 @@ Public Class FRMFrequencia
             S_Carrega_GridPesquisa_Diario()
             S_Carrega_GridPesquisa()
 
-
             Me.LBL_Mensagem.Text = "Operação realizada com sucesso"
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-success alert-icon alert-dismissible")
             Me.CAMPO_MENSAGEM.Visible = True
 
         Catch ex As Exception
             Me.CAMPO_MENSAGEM.Visible = True
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-danger alert-icon alert-dismissible")
             Me.LBL_Mensagem.Text = ex.Message
-        Finally
         End Try
+
     End Sub
 
     Private Sub Salvar_Dados()

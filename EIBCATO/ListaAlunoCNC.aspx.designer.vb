@@ -158,6 +158,15 @@ Partial Public Class ListaAlunoCNC
     Protected WithEvents DDL_Escolaridade As Global.System.Web.UI.WebControls.DropDownList
     
     '''<summary>
+    '''TXT_DATA_MATRICULA control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TXT_DATA_MATRICULA As Global.System.Web.UI.WebControls.TextBox
+    
+    '''<summary>
     '''TXT_Celular control.
     '''</summary>
     '''<remarks>

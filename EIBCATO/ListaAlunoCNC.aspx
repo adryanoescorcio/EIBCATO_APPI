@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="ListaAlunoCNC.aspx.vb" Inherits="EIBCATO.ListaAlunoCNC" %>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 
-      <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <div class="tab-container z-depth-1">
                 <ul class="nav nav-tabs">
@@ -49,17 +50,13 @@
 
                                         </div>
 
-                                        <div runat="server" id="CAMPO_MENSAGEM" visible="false">
-                                            <label style="height: 10px"></label>
-                                            <div role="alert" class="alert alert-danger alert-icon alert-icon-border alert-dismissible">
+                                            <div runat="server" id="CAMPO_MENSAGEM" role="alert" visible="false">
                                                 <div class="icon"><span class="mdi mdi-close-circle-o"></span></div>
                                                 <div class="message">
                                                     <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true" class="mdi mdi-close"></span></button>
-                                                    <strong>Atenção!</strong>
                                                     <asp:Label runat="server" ID="LBL_Mensagem"></asp:Label>
                                                 </div>
                                             </div>
-                                        </div>
 
                                         <div class="input-field col s12">
                                             <div class=" col s5 cssTextForm">
@@ -108,6 +105,25 @@
                                                     aria-hidden="true"
                                                     runat="server" ID="DDL_Escolaridade">
                                                 </asp:DropDownList>
+                                            </div>
+                                        </div>
+
+                                        <div class="input-field col s12">
+                                            <div class=" col s2 cssTextForm">
+                                                <span class="flow-text">Data Matrícula*</span>
+                                            </div>
+
+                                            <div class="col s2">
+                                                <div data-min-view="2" data-date-format="dd/mm/yyyy" class="input-group date datetimepicker">
+                                                    <asp:TextBox
+                                                        ID="TXT_DATA_MATRICULA"
+                                                        class="form-control"
+                                                        type="text"
+                                                        runat="server" />
+                                                    <span class="input-group-addon btn btn-primary">
+                                                        <i class="icon-th mdi mdi-calendar"></i>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -249,8 +265,8 @@
                                             </div>
                                         </div>
 
-                                    </div>
-                                </div>
+                    </div>
+            </div>
                             </div>
                         </div>
         </ContentTemplate>

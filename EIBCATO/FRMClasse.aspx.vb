@@ -16,7 +16,8 @@ Public Class FRMClasse
         If Not IsPostBack Then
             Me.F_Inicializar()
 
-            If Not (Me.Obj_Seguranca.idClasse Is Nothing) Then
+            If Not (Me.Obj_Seguranca.idClasse Is Nothing Or
+            Me.Obj_Seguranca.idClasse = 0) Then
                 Me.exbirObjetoSelecionado(Me.Obj_Seguranca.idClasse)
             End If
 
@@ -96,10 +97,12 @@ Public Class FRMClasse
             End If
 
             Me.LBL_Mensagem.Text = "Operação realizada com sucesso"
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-success alert-icon alert-dismissible")
             Me.CAMPO_MENSAGEM.Visible = True
 
         Catch ex As Exception
             Me.CAMPO_MENSAGEM.Visible = True
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-danger alert-icon alert-dismissible")
             Me.LBL_Mensagem.Text = ex.Message
         End Try
 
@@ -318,13 +321,20 @@ Public Class FRMClasse
                 _negocio.excluirId(LBL_C001_ID.Text)
 
                 Me.S_Limpa_Tela_TP_Cadastro()
+                Me.Obj_Seguranca.idClasse = 0
                 Me.S_Carrega_GridPesquisa()
+
             Else
                 Throw New Exception("Selecione um registro")
             End If
 
+            Me.LBL_Mensagem.Text = "Operação realizada com sucesso"
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-success alert-icon alert-dismissible")
+            Me.CAMPO_MENSAGEM.Visible = True
+
         Catch ex As Exception
             Me.CAMPO_MENSAGEM.Visible = True
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-danger alert-icon alert-dismissible")
             Me.LBL_Mensagem.Text = ex.Message
         End Try
     End Sub
