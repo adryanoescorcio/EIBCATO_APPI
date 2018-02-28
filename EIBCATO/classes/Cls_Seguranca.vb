@@ -82,6 +82,10 @@ Public Class Cls_Seguranca
             Dim _negocioUsuario As CLSN_USUARIO = New CLSN_USUARIO()
             Me._usuario = _negocioUsuario.obterUsuarioEmail(pm_C001_Email)
 
+            If (Me._usuario Is Nothing) Then
+                Return False
+            End If
+
             Return True
 
         Catch ex As Exception

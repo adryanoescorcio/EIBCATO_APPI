@@ -43,6 +43,9 @@ Public Class FRMCadastroUsuario
         Me.S_Carrega_DDL_C001_STATUS()
         Me.S_Carrega_DDL_C001_Sexo()
         Me.S_Carrega_DDL_C001_TrocarSenha()
+
+        Me.S_Carrega_DDL_Igreja()
+        Me.S_Carrega_DDL_Perfil()
     End Sub
 
     Private Sub S_Carrega_DDL_C001_Sexo()
@@ -115,7 +118,7 @@ Public Class FRMCadastroUsuario
             Dim _Obj As New PIBICAS.Models.Usuario
             Me.S_Recupera_ID_Cadastro(_KeyFieldName, _Obj)
             Me.setBancoTela(_Obj)
-            Me.setMembresia()
+            'Me.setMembresia()
             Me.setBancoTelaMembresia(_Obj)
 
             'If Not (IsNothing(Me.LBL_C003_ID.Text) Or Me.LBL_C003_ID.Text = "") Then
@@ -142,19 +145,6 @@ Public Class FRMCadastroUsuario
             Me.DDL_C005_Perfil.SelectedValue = _mem.MembresiaPerfilID
         End If
 
-    End Sub
-
-    Private Sub setMembresia()
-        If Not (Val(Me.LBL_C001_ID.Text) = 0) Then
-            Me.CAMPO_MEMBRESIA.Visible = True
-            Me.TXT_Matricula.Text = Me.TXT_C001_Cpf.Text
-
-            Me.S_Carrega_DDL_Igreja()
-            Me.S_Carrega_DDL_Perfil()
-
-        Else
-            Me.CAMPO_MEMBRESIA.Visible = False
-        End If
     End Sub
 
     Private Sub setBancoTela(_obj As PIBICAS.Models.Usuario)
@@ -228,7 +218,7 @@ Public Class FRMCadastroUsuario
         Me.TXT_C001_Tentativa.Text = Nothing
 
         'membresia
-        Me.CAMPO_MEMBRESIA.Visible = False
+        'Me.CAMPO_MEMBRESIA.Visible = False
         Me.DDL_C003_Igreja.SelectedIndex = -1
         Me.DDL_C005_Perfil.SelectedIndex = -1
         Me.TXT_Matricula.Text = ""
@@ -255,9 +245,7 @@ Public Class FRMCadastroUsuario
 
             S_Carrega_GridPesquisa()
 
-            If Not (Me.LBL_C001_ID.Text = "" Or Me.LBL_C001_ID.Text = Nothing) Then
-                Me.S_Limpa_Tela_TP_Cadastro()
-            End If
+            Me.S_Limpa_Tela_TP_Cadastro()
 
             Me.LBL_Mensagem.Text = "Operação realizada com sucesso"
             Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-success alert-icon alert-dismissible")
@@ -276,7 +264,12 @@ Public Class FRMCadastroUsuario
             Dim _obj As PIBICAS.Models.Membresia = New PIBICAS.Models.Membresia
             Dim _negocio As CLSN_MEMBRESIA = New CLSN_MEMBRESIA
             Me.setTelaBancoMembresia(_obj)
-            _negocio.inserirAtualizarObjeto(_obj)
+
+            If Not (Me.DDL_C003_Igreja.SelectedValue = "") AndAlso Not (
+                Me.DDL_C005_Perfil.SelectedValue = "") Then
+
+                _negocio.inserirAtualizarObjeto(_obj)
+            End If
         Catch ex As Exception
             Throw
         End Try
@@ -291,7 +284,7 @@ Public Class FRMCadastroUsuario
             Dim _negocio As CLSN_USUARIO = New CLSN_USUARIO
             Me.setTelaBanco(_obj)
             _negocio.inserirAtualizarUsuario(_obj)
-
+            Me.LBL_C001_ID.Text = _obj.UsuarioId
         Catch ex As Exception
             Throw
         End Try
@@ -334,17 +327,13 @@ Public Class FRMCadastroUsuario
 
         If Not (Me.DDL_C003_Igreja.SelectedValue = "") Then
             obj.MembresiaIgrejaID = Me.DDL_C003_Igreja.SelectedItem.Value
-        Else
-            Throw New Exception("O campo Igreja é obrigatório.")
         End If
 
         If Not (Me.DDL_C005_Perfil.SelectedValue = "") Then
             obj.MembresiaPerfilID = Me.DDL_C005_Perfil.SelectedItem.Value
-        Else
-            Throw New Exception("O campo Perfil é obrigatório.")
         End If
 
-        obj.MembresiaMatricula = Me.TXT_Matricula.Text
+        obj.MembresiaMatricula = Me.TXT_C001_Cpf.Text
         obj.MembresiaStatus = "Ativo"
         obj.MembresiaUsuarioId = Me.LBL_C001_ID.Text
 
@@ -367,8 +356,10 @@ Public Class FRMCadastroUsuario
             Throw New Exception("O campo CPF é obrigatório.")
         End If
 
-        If (Me.existeCpf()) Then
-            Throw New Exception("O Cpf já existe")
+        If (Me.LBL_C001_ID.Text = "" Or Me.LBL_C001_ID.Text Is Nothing) Then
+            If (Me.existeCpf()) Then
+                Throw New Exception("O Cpf já existe")
+            End If
         End If
 
         If (Me.Obj_Seguranca.ValidarCPF(Me.TXT_C001_Cpf.Text.Substring(0, 9))) Then
@@ -381,6 +372,17 @@ Public Class FRMCadastroUsuario
 
         If (Me.TXT_C001_SobreNome.Text Is Nothing) Then
             Throw New Exception("O campo SobreNome é obrigatório.")
+        End If
+
+        If (Me.LBL_C001_ID.Text = "" Or Me.LBL_C001_ID.Text Is Nothing) Then
+            If (Me.TXT_C001_Senha.Text Is Nothing Or Me.TXT_C001_Senha.Text = "") Then
+                Throw New Exception("Digite o campo senha.")
+            End If
+
+            If (Me.TXT_C001_Senha_Repetir.Text Is Nothing Or Me.TXT_C001_Senha_Repetir.Text = "") Then
+                Throw New Exception("Digite o campo repetir senha.")
+            End If
+
         End If
 
         If Not (Me.TXT_C001_Senha.Text Is Nothing) Then
@@ -412,18 +414,12 @@ Public Class FRMCadastroUsuario
     End Function
 
     Private Function existeCpf() As Boolean
-        Try
-            Dim _negocio As CLSN_USUARIO = New CLSN_USUARIO
-            Dim Usuario = _negocio.pesquisarCPF(TXT_C001_Cpf.Text)
+        Dim _negocio As CLSN_USUARIO = New CLSN_USUARIO
+        Dim Usuario = _negocio.pesquisarCPF(TXT_C001_Cpf.Text)
 
-            If (Usuario Is Nothing) Then
-                Throw New Exception("Já existe um usuário cadastro com este cpf.")
-            End If
-
-        Catch ex As Exception
-            Me.CAMPO_MENSAGEM.Visible = True
-            Me.LBL_Mensagem.Text = ex.Message
-        End Try
+        If (Usuario IsNot Nothing) Then
+            Return True
+        End If
 
         Return False
 

@@ -20,21 +20,26 @@
             End If
 
         Catch ex As Exception
-            Me.LBL_Mensagem.Text = ex.Message
             Me.CAMPO_MENSAGEM.Visible = True
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-danger alert-icon alert-dismissible")
+            Me.LBL_Mensagem.Text = ex.Message
         End Try
     End Sub
 
     Private Sub SetPerfilUsuario()
+        Try
+            Me.LBL_Nome.Text = Obj_Seguranca._usuario.UsuarioNome
 
-        Me.LBL_Nome.Text = Obj_Seguranca._usuario.UsuarioNome
+            Dim _negocio As CLSN_USUARIO = New CLSN_USUARIO
+            Dim obj As PIBICAS.Models.Usuario = _negocio.obterUsuarioIdEF(Obj_Seguranca._usuario.UsuarioId)
 
-        Dim _negocio As CLSN_USUARIO = New CLSN_USUARIO
-        Dim obj As PIBICAS.Models.Usuario = _negocio.obterUsuarioIdEF(Obj_Seguranca._usuario.UsuarioId)
+            Me.LBL_Lotacao.Text = obj.Membresias.First.Igreja.IgrejaNome
+            Me.LBL_Acesso.Text = obj.Membresias.First.Perfil.PerfilNome
+            Me.Obj_Seguranca.idIgreja = obj.Membresias.First.MembresiaIgrejaID
 
-        Me.LBL_Lotacao.Text = obj.Membresias.First.Igreja.IgrejaNome
-        Me.LBL_Acesso.Text = obj.Membresias.First.Perfil.PerfilNome
-        Me.Obj_Seguranca.idIgreja = obj.Membresias.First.MembresiaIgrejaID
+        Catch ex As Exception
+            Throw New Exception("Usuário sem membresia")
+        End Try
 
     End Sub
 

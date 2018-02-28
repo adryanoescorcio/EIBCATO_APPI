@@ -87,7 +87,7 @@
                                         <span class="flow-text ">Email*</span>
                                     </div>
                                     <div class="col s3">
-                                        <asp:TextBox runat="server" TextMode="Email" Width="100%" ID="TXT_C001_Email"></asp:TextBox>
+                                        <asp:TextBox runat="server" CssClass="text-lowercase" TextMode="Email" Width="100%" ID="TXT_C001_Email"></asp:TextBox>
                                     </div>
                                 </div>
 
@@ -154,7 +154,7 @@
                                             <span class="flow-text ">Tentativas*</span>
                                         </div>
                                         <div class="col s1">
-                                            <asp:TextBox runat="server" Width="100%" ID="TXT_C001_Tentativa"></asp:TextBox>
+                                            <asp:TextBox runat="server" Width="100%" ID="TXT_C001_Tentativa" Text="0"></asp:TextBox>
                                         </div>
                                     </div>
 
@@ -174,7 +174,7 @@
                                     </div>
 
                                 </div>
-                                <div id="CAMPO_MEMBRESIA" runat="server" visible="false">
+                                <div id="CAMPO_MEMBRESIA" runat="server">
                                     <hr />
                                     <div class="panel-heading">
                                         Membresia
@@ -232,13 +232,13 @@
                                                     <HeaderTemplate>
                                                         <thead>
                                                             <tr role="row">
-                                                                <th class="sorting_asc" tabindex="0" aria-controls="table1" rowspan="1" colspan="1"
+                                                                <th class="" tabindex="0" aria-controls="table1" rowspan="1" colspan="1"
                                                                     aria-label="" style="width: 500px;">Nome</th>
-                                                                <th class="sorting_asc" tabindex="0" aria-controls="table1" rowspan="1" colspan="1"
+                                                                <th class="" tabindex="0" aria-controls="table1" rowspan="1" colspan="1"
                                                                     aria-label="" style="width: 100px;">Status</th>
-                                                                <th class="sorting_asc" tabindex="0" aria-controls="table1" rowspan="1" colspan="1"
+                                                                <th class="" tabindex="0" aria-controls="table1" rowspan="1" colspan="1"
                                                                     aria-label="" style="width: 150px;">Último Usuário</th>
-                                                                <th class="sorting_asc" tabindex="0" aria-controls="table1" rowspan="1" colspan="1"
+                                                                <th class="" tabindex="0" aria-controls="table1" rowspan="1" colspan="1"
                                                                     aria-label="" style="width: 150px;">Data</th>
                                                             </tr>
                                                         </thead>

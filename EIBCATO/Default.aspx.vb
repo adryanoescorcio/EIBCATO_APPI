@@ -60,7 +60,7 @@
 
             Me.Obj_Seguranca.Rastro = Me.F_Recupera_IP & " - " & Me.F_Recupera_Mac
 
-            If Me.Obj_Seguranca._usuario.UsuarioTentativaErro > 4 Then
+            If Me.Obj_Seguranca._usuario.UsuarioTentativaErro > 6 Then
                 Throw New Exception("Limite superado - FALAR COM SUPORTE")
             End If
 
@@ -89,7 +89,7 @@
 
             'If Me.Obj_Seguranca.C010_PrincipalNome <> "" Then
             Me.S_Registra_Entrada()
-            Response.Redirect("FRMClasse.aspx")
+            Response.Redirect("FRM_FeedNoticias.aspx", False)
             'Else
             'Me.LBL_Mensagem.Text = "Usuário não possui tela principal"
             'Me.LBL_Mensagem.Visible = True
