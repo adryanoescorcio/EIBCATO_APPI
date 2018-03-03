@@ -8,7 +8,7 @@
                 <div class="card-panel">
                     <div class="row">
                             <img src="Imagens/Logoempresa.png" alt="" class="circle responsive-img valign profile-image-login" style="height: 200px;margin-left:120px" />
-                            <p class="center login-form-text texto_init">Sistema Igreja Batista Catedral de Adoração</p>
+                            <p class="center login-form-text texto_init">Igreja Batista Catedral de Adoração</p>
                             <br />
                         </div>
                 </div>

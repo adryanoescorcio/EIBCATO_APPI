@@ -30,9 +30,15 @@ Public Class CLSN_USUARIO
         Return dao.PesquisarPorId(_id)
     End Function
 
-    Friend Sub atualizarUsuario(usuario As Usuario)
+    Friend Sub atualizarUsuarioTentativa(usuario As Usuario)
         Dim dao = New PIBICAS.Models.Dao.UsuarioDAO
         usuario.UsuarioTentativaErro += 1
+
+        dao.InsertOrUpdate(usuario)
+    End Sub
+
+    Friend Sub atualizarUsuario(usuario As Usuario)
+        Dim dao = New PIBICAS.Models.Dao.UsuarioDAO
 
         dao.InsertOrUpdate(usuario)
     End Sub

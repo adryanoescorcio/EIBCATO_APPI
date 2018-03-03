@@ -96,7 +96,7 @@
                                                 <asp:Label runat="server" ID="LBL_Lotacao" CssClass="LabelSis"></asp:Label>
                                             </div>
                                             <div style="margin-left: 250px; position: fixed">
-                                                <a href="../default.aspx" class="waves-effect waves-red btn" runat="server" id="BNT_SAIR">
+                                                <a href="default.aspx" class="waves-effect waves-red btn" runat="server" id="BNT_SAIR">
                                                     <i class="material-icons left">power_settings_new</i>
                                                     Sair
                                                 </a>

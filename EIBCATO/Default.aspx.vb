@@ -69,7 +69,7 @@
 
             If Me.Obj_Seguranca._usuario.UsuarioSenha.ToUpper <> _Senha Then
                 Dim _negocioUsuario As CLSN_USUARIO = New CLSN_USUARIO()
-                _negocioUsuario.atualizarUsuario(Me.Obj_Seguranca._usuario)
+                _negocioUsuario.atualizarUsuarioTentativa(Me.Obj_Seguranca._usuario)
                 Throw New Exception("Email não autorizado")
             End If
 

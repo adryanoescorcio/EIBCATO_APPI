@@ -100,6 +100,7 @@ Public Class Cls_Seguranca
 
             Dim _negocioUsuario As CLSN_USUARIO = New CLSN_USUARIO()
             Me._usuario.UsuarioSenha = pm_C001_Senha
+            Me._usuario.UsuarioTrocarSenha = "Não"
 
             _negocioUsuario.atualizarUsuario(Me._usuario)
 
