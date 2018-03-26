@@ -1,8 +1,13 @@
 ﻿
+Imports Microsoft.Reporting.WebForms
+Imports PIBICAS.Models.Context
+Imports System.Linq
+
 Public Class ReportFrequenciaAluno
     Inherits System.Web.UI.Page
 
     Private Obj_Seguranca As Cls_Seguranca
+    Public db As IBCAContext = New IBCAContext()
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
 
@@ -14,8 +19,9 @@ Public Class ReportFrequenciaAluno
 
         If Not IsPostBack Then
 
+            Dim dt As IBCADS.DSFrequenciaDataTable = New IBCADS.DSFrequenciaDataTable()
 
-            SqlDataSource1.SelectCommand = "SELECT        
+            Dim sql = "SELECT        
             dbo.classe.classecodigo, 
             dbo.classe.classedatainicio, 
             dbo.classe.classedatafim, 
@@ -38,6 +44,26 @@ Public Class ReportFrequenciaAluno
             AND dbo.lista.listaalunoid = dbo.aluno.alunoid 
             AND dbo.classe.classeid = " & Me.Obj_Seguranca.idClasse
 
+            Dim qr = db.Database.SqlQuery(Of FrequenciaDTO)(sql).ToList()
+
+
+            For Each cl In qr
+                dt.Rows.Add(cl.Classecodigo,
+                            cl.Classedatainicio.ToString("dd/MM/yy"),
+                            cl.Classedatafim.ToString("dd/MM/yy"),
+                            cl.Classecargahoraria,
+                            cl.Classestatus,
+                            cl.Alunonome,
+                            cl.Alunocpf,
+                            cl.Alunosituacao,
+                            cl.Frequenciasituacao,
+                            cl.Frequenciadata.ToString("dd/MM/yy"),
+                            cl.Frequencaunique,
+                            cl.Presenca,
+                            cl.Ausencia)
+            Next
+
+            ReportViewer1.LocalReport.DataSources.Add(New ReportDataSource("DataSet1", dt.CopyToDataTable()))
             ReportViewer1.LocalReport.Refresh()
 
         Else

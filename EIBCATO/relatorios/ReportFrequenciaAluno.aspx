@@ -25,17 +25,10 @@
                 ToolbarHoverForegroundColor="" ToolBarItemBorderColor="" ToolBarItemBorderStyle="Solid" ToolBarItemBorderWidth="1px" ToolBarItemHoverBackColor=""
                 ToolBarItemPressedBorderColor="51, 102, 153" ToolBarItemPressedBorderStyle="Solid" ToolBarItemPressedBorderWidth="1px"
                 ToolBarItemPressedHoverBackColor="153, 187, 226" Width="850px" SizeToReportContent="true" >
-                <LocalReport ReportPath="relatorios\RdlcFrequenciaAluno.rdlc">
-                    <DataSources>
-                        <rsweb:ReportDataSource DataSourceId="SqlDataSource1" Name="DataSet1" />
-                    </DataSources>
+                <LocalReport ReportPath="relatorios\RdlcFrequenciaAluno2.rdlc">
                 </LocalReport>
 
             </rsweb:ReportViewer>
-
-            <asp:SqlDataSource ID="SqlDataSource1"
-                runat="server" ConnectionString="<%$ ConnectionStrings:conexaoodbcpostgres %>"
-                ProviderName="<%$ ConnectionStrings:conexaoodbcpostgres.ProviderName %>"></asp:SqlDataSource>
 
         </div>
     </form>

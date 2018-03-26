@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="IBCADS" targetNamespace="http://tempuri.org/IBCADS.xsd" xmlns:mstns="http://tempuri.org/IBCADS.xsd" xmlns="http://tempuri.org/IBCADS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="IBCAContext" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="IBCAContext (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.IBCAContext.ConnectionString" Provider="Npgsql" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DSFrequenciaTableAdapter" GeneratorDataComponentClassName="DSFrequenciaTableAdapter" Name="DSFrequencia" UserDataComponentName="DSFrequenciaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="IBCAContext (Web.config)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT
+	*
+FROM
+	(
+		SELECT
+			dbo.classe.classecodigo,
+			dbo.classe.classedatainicio,
+			dbo.classe.classedatafim,
+			dbo.classe.classecargahoraria,
+			dbo.classe.classestatus,
+			dbo.aluno.alunonome,
+			dbo.aluno.alunocpf,
+			dbo.aluno.alunosituacao,
+			CASE
+		WHEN dbo.frequencia.frequenciasituacao = '1' THEN
+			'P'
+		ELSE
+			'X'
+		END AS frequenciasituacao,
+		dbo.frequencia.frequenciadata,
+		dbo.frequencia.frequencaunique,
+		(
+			SELECT
+				COUNT (q.listaid)
+			FROM
+				dbo.frequencia q
+			WHERE
+				q.classeid = dbo.frequencia.classeid
+			AND q.listaid = dbo.lista.listaid
+			AND q.frequenciasituacao = '1'
+		) AS presenca,
+		(
+			SELECT
+				COUNT (q.listaid)
+			FROM
+				dbo.frequencia q
+			WHERE
+				q.classeid = dbo.frequencia.classeid
+			AND q.listaid = dbo.lista.listaid
+			AND q.frequenciasituacao = '0'
+		) AS ausencia
+	FROM
+		dbo.frequencia,
+		dbo.classe,
+		dbo.lista,
+		dbo.aluno
+	WHERE
+		dbo.frequencia.classeid = dbo.classe.classeid
+	AND dbo.frequencia.listaid = dbo.lista.listaid
+	AND dbo.lista.listaalunoid = dbo.aluno.alunoid
+	) tb1</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DSPlanoClasseTableAdapter" GeneratorDataComponentClassName="DSPlanoClasseTableAdapter" Name="DSPlanoClasse" UserDataComponentName="DSPlanoClasseTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="IBCAContext (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        dbo.plano.planoid, dbo.plano.planoclasseid, dbo.plano.planodescricao, dbo.plano.planoprofessor, dbo.plano.planodataprevista, dbo.plano.planohoraaula, 
+                         dbo.classeplanoaula.classeid, dbo.classe.classecodigo, dbo.classe.classedatainicio, dbo.classe.classedatafim, dbo.classe.classecargahoraria, 
+                         dbo.classe.classestatus
+FROM            dbo.classe INNER JOIN
+                         dbo.classeplanoaula ON dbo.classe.classeid = dbo.classeplanoaula.classeid INNER JOIN
+                         dbo.plano ON dbo.classeplanoaula.planoaulaid = dbo.plano.planoid</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="planoid" DataSetColumn="planoid" />
+              <Mapping SourceColumn="planoclasseid" DataSetColumn="planoclasseid" />
+              <Mapping SourceColumn="planodescricao" DataSetColumn="planodescricao" />
+              <Mapping SourceColumn="planoprofessor" DataSetColumn="planoprofessor" />
+              <Mapping SourceColumn="planodataprevista" DataSetColumn="planodataprevista" />
+              <Mapping SourceColumn="planohoraaula" DataSetColumn="planohoraaula" />
+              <Mapping SourceColumn="classeid" DataSetColumn="classeid" />
+              <Mapping SourceColumn="classecodigo" DataSetColumn="classecodigo" />
+              <Mapping SourceColumn="classedatainicio" DataSetColumn="classedatainicio" />
+              <Mapping SourceColumn="classedatafim" DataSetColumn="classedatafim" />
+              <Mapping SourceColumn="classecargahoraria" DataSetColumn="classecargahoraria" />
+              <Mapping SourceColumn="classestatus" DataSetColumn="classestatus" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="IBCADS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="IBCADS" msprop:Generator_UserDSName="IBCADS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DSFrequencia" msprop:Generator_TableClassName="DSFrequenciaDataTable" msprop:Generator_TableVarName="tableDSFrequencia" msprop:Generator_RowChangedName="DSFrequenciaRowChanged" msprop:Generator_TablePropName="DSFrequencia" msprop:Generator_RowDeletingName="DSFrequenciaRowDeleting" msprop:Generator_RowChangingName="DSFrequenciaRowChanging" msprop:Generator_RowEvHandlerName="DSFrequenciaRowChangeEventHandler" msprop:Generator_RowDeletedName="DSFrequenciaRowDeleted" msprop:Generator_RowClassName="DSFrequenciaRow" msprop:Generator_UserTableName="DSFrequencia" msprop:Generator_RowEvArgName="DSFrequenciaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="classecodigo" msprop:Generator_ColumnVarNameInTable="columnclassecodigo" msprop:Generator_ColumnPropNameInRow="classecodigo" msprop:Generator_ColumnPropNameInTable="classecodigoColumn" msprop:Generator_UserColumnName="classecodigo" type="xs:string" minOccurs="0" />
+              <xs:element name="classedatainicio" msprop:Generator_ColumnVarNameInTable="columnclassedatainicio" msprop:Generator_ColumnPropNameInRow="classedatainicio" msprop:Generator_ColumnPropNameInTable="classedatainicioColumn" msprop:Generator_UserColumnName="classedatainicio" type="xs:string" minOccurs="0" />
+              <xs:element name="classedatafim" msprop:Generator_ColumnVarNameInTable="columnclassedatafim" msprop:Generator_ColumnPropNameInRow="classedatafim" msprop:Generator_ColumnPropNameInTable="classedatafimColumn" msprop:Generator_UserColumnName="classedatafim" type="xs:string" minOccurs="0" />
+              <xs:element name="classecargahoraria" msprop:Generator_ColumnVarNameInTable="columnclassecargahoraria" msprop:Generator_ColumnPropNameInRow="classecargahoraria" msprop:Generator_ColumnPropNameInTable="classecargahorariaColumn" msprop:Generator_UserColumnName="classecargahoraria" type="xs:string" minOccurs="0" />
+              <xs:element name="classestatus" msprop:Generator_ColumnVarNameInTable="columnclassestatus" msprop:Generator_ColumnPropNameInRow="classestatus" msprop:Generator_ColumnPropNameInTable="classestatusColumn" msprop:Generator_UserColumnName="classestatus" type="xs:string" minOccurs="0" />
+              <xs:element name="alunonome" msprop:Generator_ColumnVarNameInTable="columnalunonome" msprop:Generator_ColumnPropNameInRow="alunonome" msprop:Generator_ColumnPropNameInTable="alunonomeColumn" msprop:Generator_UserColumnName="alunonome" type="xs:string" minOccurs="0" />
+              <xs:element name="alunocpf" msprop:Generator_ColumnVarNameInTable="columnalunocpf" msprop:Generator_ColumnPropNameInRow="alunocpf" msprop:Generator_ColumnPropNameInTable="alunocpfColumn" msprop:Generator_UserColumnName="alunocpf" type="xs:string" minOccurs="0" />
+              <xs:element name="alunosituacao" msprop:Generator_ColumnVarNameInTable="columnalunosituacao" msprop:Generator_ColumnPropNameInRow="alunosituacao" msprop:Generator_ColumnPropNameInTable="alunosituacaoColumn" msprop:Generator_UserColumnName="alunosituacao" type="xs:string" minOccurs="0" />
+              <xs:element name="frequenciasituacao" msprop:Generator_ColumnVarNameInTable="columnfrequenciasituacao" msprop:Generator_ColumnPropNameInRow="frequenciasituacao" msprop:Generator_ColumnPropNameInTable="frequenciasituacaoColumn" msprop:Generator_UserColumnName="frequenciasituacao" type="xs:string" minOccurs="0" />
+              <xs:element name="frequenciadata" msprop:Generator_ColumnVarNameInTable="columnfrequenciadata" msprop:Generator_ColumnPropNameInRow="frequenciadata" msprop:Generator_ColumnPropNameInTable="frequenciadataColumn" msprop:Generator_UserColumnName="frequenciadata" type="xs:string" minOccurs="0" />
+              <xs:element name="frequenciaunique" msprop:Generator_ColumnVarNameInTable="columnfrequenciaunique" msprop:Generator_ColumnPropNameInRow="frequenciaunique" msprop:Generator_ColumnPropNameInTable="frequenciauniqueColumn" msprop:Generator_UserColumnName="frequenciaunique" type="xs:string" minOccurs="0" />
+              <xs:element name="presenca" msprop:Generator_ColumnVarNameInTable="columnpresenca" msprop:Generator_ColumnPropNameInRow="presenca" msprop:Generator_ColumnPropNameInTable="presencaColumn" msprop:Generator_UserColumnName="presenca" type="xs:string" minOccurs="0" />
+              <xs:element name="ausencia" msprop:Generator_ColumnVarNameInTable="columnausencia" msprop:Generator_ColumnPropNameInRow="ausencia" msprop:Generator_ColumnPropNameInTable="ausenciaColumn" msprop:Generator_UserColumnName="ausencia" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DSPlanoClasse" msprop:Generator_TableClassName="DSPlanoClasseDataTable" msprop:Generator_TableVarName="tableDSPlanoClasse" msprop:Generator_TablePropName="DSPlanoClasse" msprop:Generator_RowDeletingName="DSPlanoClasseRowDeleting" msprop:Generator_RowChangingName="DSPlanoClasseRowChanging" msprop:Generator_RowEvHandlerName="DSPlanoClasseRowChangeEventHandler" msprop:Generator_RowDeletedName="DSPlanoClasseRowDeleted" msprop:Generator_UserTableName="DSPlanoClasse" msprop:Generator_RowChangedName="DSPlanoClasseRowChanged" msprop:Generator_RowEvArgName="DSPlanoClasseRowChangeEvent" msprop:Generator_RowClassName="DSPlanoClasseRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="planoid" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnplanoid" msprop:Generator_ColumnPropNameInRow="planoid" msprop:Generator_ColumnPropNameInTable="planoidColumn" msprop:Generator_UserColumnName="planoid" type="xs:int" />
+              <xs:element name="planoclasseid" msprop:Generator_ColumnVarNameInTable="columnplanoclasseid" msprop:Generator_ColumnPropNameInRow="planoclasseid" msprop:Generator_ColumnPropNameInTable="planoclasseidColumn" msprop:Generator_UserColumnName="planoclasseid" type="xs:int" />
+              <xs:element name="planodescricao" msprop:Generator_ColumnVarNameInTable="columnplanodescricao" msprop:Generator_ColumnPropNameInRow="planodescricao" msprop:Generator_ColumnPropNameInTable="planodescricaoColumn" msprop:Generator_UserColumnName="planodescricao" type="xs:string" />
+              <xs:element name="planoprofessor" msprop:Generator_ColumnVarNameInTable="columnplanoprofessor" msprop:Generator_ColumnPropNameInRow="planoprofessor" msprop:Generator_ColumnPropNameInTable="planoprofessorColumn" msprop:Generator_UserColumnName="planoprofessor" type="xs:string" minOccurs="0" />
+              <xs:element name="planodataprevista" msprop:Generator_ColumnVarNameInTable="columnplanodataprevista" msprop:Generator_ColumnPropNameInRow="planodataprevista" msprop:Generator_ColumnPropNameInTable="planodataprevistaColumn" msprop:Generator_UserColumnName="planodataprevista" type="xs:dateTime" />
+              <xs:element name="planohoraaula" msprop:Generator_ColumnVarNameInTable="columnplanohoraaula" msprop:Generator_ColumnPropNameInRow="planohoraaula" msprop:Generator_ColumnPropNameInTable="planohoraaulaColumn" msprop:Generator_UserColumnName="planohoraaula" type="xs:int" />
+              <xs:element name="classeid" msprop:Generator_ColumnVarNameInTable="columnclasseid" msprop:Generator_ColumnPropNameInRow="classeid" msprop:Generator_ColumnPropNameInTable="classeidColumn" msprop:Generator_UserColumnName="classeid" type="xs:int" />
+              <xs:element name="classecodigo" msprop:Generator_ColumnVarNameInTable="columnclassecodigo" msprop:Generator_ColumnPropNameInRow="classecodigo" msprop:Generator_ColumnPropNameInTable="classecodigoColumn" msprop:Generator_UserColumnName="classecodigo" type="xs:string" />
+              <xs:element name="classedatainicio" msprop:Generator_ColumnVarNameInTable="columnclassedatainicio" msprop:Generator_ColumnPropNameInRow="classedatainicio" msprop:Generator_ColumnPropNameInTable="classedatainicioColumn" msprop:Generator_UserColumnName="classedatainicio" type="xs:dateTime" />
+              <xs:element name="classedatafim" msprop:Generator_ColumnVarNameInTable="columnclassedatafim" msprop:Generator_ColumnPropNameInRow="classedatafim" msprop:Generator_ColumnPropNameInTable="classedatafimColumn" msprop:Generator_UserColumnName="classedatafim" type="xs:dateTime" />
+              <xs:element name="classecargahoraria" msprop:Generator_ColumnVarNameInTable="columnclassecargahoraria" msprop:Generator_ColumnPropNameInRow="classecargahoraria" msprop:Generator_ColumnPropNameInTable="classecargahorariaColumn" msprop:Generator_UserColumnName="classecargahoraria" type="xs:string" />
+              <xs:element name="classestatus" msprop:Generator_ColumnVarNameInTable="columnclassestatus" msprop:Generator_ColumnPropNameInRow="classestatus" msprop:Generator_ColumnPropNameInTable="classestatusColumn" msprop:Generator_UserColumnName="classestatus" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DSPlanoClasse" />
+      <xs:field xpath="mstns:planoid" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -1682,29 +1682,18 @@
     <Content Include="assets\lib\summernote\font\summernote.eot" />
     <Content Include="assets\lib\summernote\font\summernote.ttf" />
     <Content Include="assets\lib\summernote\font\summernote.woff" />
-    <Content Include="DataSet.xsc">
-      <DependentUpon>DataSet.xsd</DependentUpon>
+    <Content Include="IBCADS.xsc">
+      <DependentUpon>IBCADS.xsd</DependentUpon>
     </Content>
-    <None Include="DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet.Designer.vb</LastGenOutput>
+    <None Include="IBCADS.xsd">
       <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IBCADS.Designer.vb</LastGenOutput>
     </None>
-    <Content Include="DataSet.xss">
-      <DependentUpon>DataSet.xsd</DependentUpon>
+    <Content Include="IBCADS.xss">
+      <DependentUpon>IBCADS.xsd</DependentUpon>
     </Content>
     <None Include="My Project\PublishProfiles\FolderProfile.pubxml" />
-    <Content Include="postgres.xsc">
-      <DependentUpon>postgres.xsd</DependentUpon>
-    </Content>
-    <None Include="postgres.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>postgres.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="postgres.xss">
-      <DependentUpon>postgres.xsd</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Imagens\14500725_1125823134174457_3883057948547426006_o.jpg" />
     <Content Include="Imagens\3d bar chart.png" />
@@ -2035,14 +2024,6 @@
     <Compile Include="classes\CLSN_USUARIO.vb" />
     <Compile Include="classes\CLST_UsuarioFuncionalidade.vb" />
     <Compile Include="classes\Cls_Seguranca.vb" />
-    <Compile Include="DataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet.vb">
-      <DependentUpon>DataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Default.aspx.designer.vb">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
@@ -2050,6 +2031,8 @@
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="DTO\PlanoClasseDTO.vb" />
+    <Compile Include="DTO\FrequenciaDTO.vb" />
     <Compile Include="FRMCadastroUsuario.aspx.designer.vb">
       <DependentUpon>FRMCadastroUsuario.aspx</DependentUpon>
     </Compile>
@@ -2088,6 +2071,11 @@
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IBCADS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IBCADS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ListaAlunoCNC.aspx.designer.vb">
       <DependentUpon>ListaAlunoCNC.aspx</DependentUpon>
     </Compile>
@@ -2113,14 +2101,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="postgres.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>postgres.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="postgres.vb">
-      <DependentUpon>postgres.xsd</DependentUpon>
     </Compile>
     <Compile Include="relatorios\ReportFrequenciaAluno.aspx.designer.vb">
       <DependentUpon>ReportFrequenciaAluno.aspx</DependentUpon>
@@ -2165,7 +2145,8 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="relatorios\RdlcFrequenciaAluno.rdlc" />
+    <EmbeddedResource Include="relatorios\RdlcFrequenciaAluno2.rdlc" />
+    <EmbeddedResource Include="relatorios\RdlcPlanoClasse2.rdlc" />
     <EmbeddedResource Include="relatorios\RdlcPlanoClasse.rdlc" />
   </ItemGroup>
   <ItemGroup>

@@ -2,18 +2,18 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="postgres">
+    <DataSource Name="IBCADS">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>0531bbf4-c495-4a13-b506-2e6d5dec100b</rd:DataSourceID>
+      <rd:DataSourceID>b28cf44e-36de-4379-9a50-f77112f43edd</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet1">
       <Query>
-        <DataSourceName>postgres</DataSourceName>
+        <DataSourceName>IBCADS</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -23,11 +23,11 @@
         </Field>
         <Field Name="classedatainicio">
           <DataField>classedatainicio</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="classedatafim">
           <DataField>classedatafim</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="classecargahoraria">
           <DataField>classecargahoraria</DataField>
@@ -55,10 +55,10 @@
         </Field>
         <Field Name="frequenciadata">
           <DataField>frequenciadata</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="frequencaunique">
-          <DataField>frequencaunique</DataField>
+        <Field Name="frequenciaunique">
+          <DataField>frequenciaunique</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="presenca">
@@ -71,12 +71,12 @@
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>postgres</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\AdryanoEscorcio\Documents\Visual Studio 2017\Projects\EIBCATO\EIBCATO\postgres.xsd</rd:SchemaPath>
-        <rd:TableName>ReportFrequenciaAlunoClasse</rd:TableName>
+        <rd:DataSetName>IBCADS</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\AdryanoEscorcio\Documents\Visual Studio 2017\Projects\EIBCATO\EIBCATO\IBCADS.xsd</rd:SchemaPath>
+        <rd:TableName>DSFrequencia</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>ReportFrequenciaAlunoClasseTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>DSFrequenciaTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -135,7 +135,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
             <Top>0.17639cm</Top>
-            <Left>7.7617cm</Left>
+            <Left>7.219cm</Left>
             <Height>0.6cm</Height>
             <Width>2.92333cm</Width>
             <ZIndex>1</ZIndex>
@@ -168,7 +168,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
             <Top>0.17639cm</Top>
-            <Left>11.30712cm</Left>
+            <Left>10.14233cm</Left>
             <Height>0.6cm</Height>
             <Width>3.00271cm</Width>
             <ZIndex>2</ZIndex>
@@ -189,7 +189,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Fields!classecodigo.Value &amp; " " &amp; Fields!classestatus.Value</Value>
+                    <Value>=Fields!classecodigo.Value &amp; " (" &amp; Fields!classestatus.Value &amp; ")"</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -232,7 +232,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox21</rd:DefaultName>
             <Top>0.77639cm</Top>
-            <Left>7.7617cm</Left>
+            <Left>7.219cm</Left>
             <Height>0.6cm</Height>
             <Width>2.92333cm</Width>
             <ZIndex>4</ZIndex>
@@ -266,7 +266,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox21</rd:DefaultName>
             <Top>0.77639cm</Top>
-            <Left>11.30712cm</Left>
+            <Left>10.14233cm</Left>
             <Height>0.6cm</Height>
             <Width>3.00271cm</Width>
             <ZIndex>5</ZIndex>
@@ -328,7 +328,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.88572cm</Width>
+                  <Width>0.7928cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.28386cm</Width>
@@ -625,7 +625,7 @@
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>5.72792cm</Size>
+                    <Size>7.18313cm</Size>
                     <CellContents>
                       <Textbox Name="alunonome">
                         <CanGrow>true</CanGrow>
@@ -670,7 +670,7 @@
             <Top>1.86119cm</Top>
             <Left>0.58575cm</Left>
             <Height>1.2cm</Height>
-            <Width>8.99521cm</Width>
+            <Width>10.3575cm</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>

@@ -1,5 +1,4 @@
-﻿Imports CrystalDecisions.Shared
-Imports PIBICAS.Models
+﻿Imports PIBICAS.Models
 
 Public Class Cls_Seguranca
 
