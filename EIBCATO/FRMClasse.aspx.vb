@@ -26,6 +26,12 @@ Public Class FRMClasse
         Else
             Dim _Obj As Object = ViewState.Values
         End If
+
+        If LBL_Mensagem.Text <> "" Then
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-warning alert-icon alert-icon-border alert-dismissible")
+            Me.CAMPO_MENSAGEM.Visible = True
+        End If
+
     End Sub
 
     Private Sub S_Carrega_GridPesquisa()
@@ -222,7 +228,9 @@ Public Class FRMClasse
         End Try
 
         If LBL_Mensagem.Text <> "" Then
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-warning alert-icon alert-icon-border alert-dismissible")
             Me.CAMPO_MENSAGEM.Visible = True
+
         End If
     End Sub
 
@@ -375,7 +383,8 @@ Public Class FRMClasse
             Me.LBL_Mensagem.Text = ex.Message
         End Try
 
-        If Me.LBL_Mensagem.Text <> "" Then
+        If LBL_Mensagem.Text <> "" Then
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-warning alert-icon alert-icon-border alert-dismissible")
             Me.CAMPO_MENSAGEM.Visible = True
         End If
 

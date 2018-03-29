@@ -28,6 +28,12 @@ Public Class FRMFrequencia
         Else
             Dim _Obj As Object = ViewState.Values
         End If
+
+        If LBL_Mensagem.Text <> "" Then
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-warning alert-icon alert-icon-border alert-dismissible")
+            Me.CAMPO_MENSAGEM.Visible = True
+        End If
+
     End Sub
 
     Private Sub bloquearTudo()
@@ -73,6 +79,7 @@ Public Class FRMFrequencia
         End Try
 
         If LBL_Mensagem.Text <> "" Then
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-warning alert-icon alert-icon-border alert-dismissible")
             Me.CAMPO_MENSAGEM.Visible = True
         End If
     End Sub
@@ -321,10 +328,10 @@ Public Class FRMFrequencia
             Me.LBL_Mensagem.Text = ex.Message
         End Try
 
-        If Me.LBL_Mensagem.Text <> "" Then
+        If LBL_Mensagem.Text <> "" Then
+            Me.CAMPO_MENSAGEM.Attributes.Add("class", "alert alert-warning alert-icon alert-icon-border alert-dismissible")
             Me.CAMPO_MENSAGEM.Visible = True
         End If
-
     End Sub
 
     Private Sub S_Redireciona(ByVal formulario As String)
